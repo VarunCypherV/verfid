@@ -1,13 +1,14 @@
-'use client'
+"use client";
 
 import React from "react";
-
 
 function Profile() {
   return (
     <div>
-    <p>Home</p>
-
+      <p>Home</p>
+      <Navbar />
+      <p>Profile</p>
+      <Footer />
     </div>
   );
 }

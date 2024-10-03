@@ -1,5 +1,6 @@
 /* NEED TO CREATE VARIABLES FOR COLORS TO ENABLE DARK LIGHT MODE */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 :root {
   --text: #011c4b;
@@ -7,7 +8,7 @@
   --primary: #3566d0;
   --secondary: #01a1fe;
   --accent: #00e67a;
-
+  --box: #d9f1ff;
   --hover-color: #ff5722;
 }
 
@@ -155,4 +156,150 @@
 
 .subscribe-button:hover {
   background-color: var(--hover-color);
+}
+
+/* =============================================== */
+
+.WBox {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--box);
+  align-items: center;
+  padding: 50px;
+  border-radius: 40px;
+  margin: 50px;
+}
+
+.WB_Head {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.WB_Title {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the text */
+    width: 100%; /* Ensures it stretches across */
+    position: relative; /* Set position to relative for absolute positioning */
+  }
+  
+  .WB_Title img {
+    position: absolute; /* Position the image absolutely */
+    left: 10px; /* Adjust as needed to place it at the corner */
+    height: 25px; /* Maintain height */
+    width: 25px; /* Maintain width */
+  }
+  
+  .WB_Title h1 {
+    margin: 0; /* Remove margin to avoid extra space */
+  }
+  
+  
+
+.WB_Cap {
+  margin: auto;
+}
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.fg_content {
+  width: 100%;
+  display: flex; /* Flexbox for alignment */
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+/* Additional styling for the label and input field */
+label {
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--text);
+  text-align: left; /* Center the text */
+  align-self: start;
+}
+
+.input-field {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 2px solid #7ca2c7;
+  border-radius: 4px;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  width: 95%; /* Keep width as is or adjust to your preference */
+  text-align: left; /* Center text within the input field */
+}
+
+.required {
+  color: red;
+}
+.RF {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 100px;
+}
+
+.input-field:focus {
+  border-color: #5a82ab; /* Focus border color */
+}
+
+.RegFieldContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  > div {
+    flex: 1;
+  }
+}
+.LogFieldContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+    > div {
+      flex: 1;
+    }
+  }
+.RegButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 50px 0px;
+}
+.ButtonLeft {
+  border-radius: 8px;
+  background-color: #00e67a;
+  margin-right: 25px;
+  padding: 10px 26px;
+  > p {
+    margin: 0px;
+  }
+}
+.ButtonRight {
+  border-radius: 8px;
+  background-color: transparent;
+  border: 3px solid #00e67a;
+  margin-left: 25px;
+  padding: 10px 20px;
+  > p {
+    margin: 0px;
+  }
 }
