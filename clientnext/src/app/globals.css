@@ -1,74 +1,158 @@
 /* NEED TO CREATE VARIABLES FOR COLORS TO ENABLE DARK LIGHT MODE */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
+:root {
+  --text: #011c4b;
+  --background: #f7fafd;
+  --primary: #3566d0;
+  --secondary: #01a1fe;
+  --accent: #00e67a;
 
-.Nav{
-    display: flex;
-    flex-direction: row;
-    flex:1;
-    background-color:#F7FAFD;
-    padding: 25px 50px;
+  --hover-color: #ff5722;
+}
+
+.Nav {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  background-color: var(--background);
+  padding: 25px 50px;
 }
 .nav-link {
-    text-decoration: none; /* Removes underline */
-    color: #011C4B;        /* Default color */
-    font-size: 16px;
-    font-family: 'Inter', sans-serif;
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-    cursor: pointer;       /* Adds pointer cursor */
+  text-decoration: none; /* Removes underline */
+  color: var(--text); /* Default color */
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  cursor: pointer; /* Adds pointer cursor */
 }
 
 .nav-link:hover {
-    color: #ff5722; 
-           /* Change color on hover */
+  color: var(--hover-color);
+  /* Change color on hover */
 }
 
-
-.Left{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex:1;
-    margin-right: 100px;
-    >img{
-        height: 30px;
-        width: 80px;
-        align-self: center;
-    }
-}
-.Right{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex:2;
-    >div{
-        align-self: center;
-        >img {
-            height: 30px;
-            align-self: center;
-            
-        }
-    }
-    > p {
-        font-size: 16px;
-        font-family: 'Inter', sans-serif;
-        color: #011C4B;
-        align-self: center;
-        
-    }
-}
-.ProfileImg{
-
+.Left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  margin-right: 100px;
+  > img {
+    height: 30px;
+    width: 80px;
     align-self: center;
-    >Img{
-        height: 30px;
+  }
+}
+.Right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 2;
+  > div {
+    align-self: center;
+    > img {
+      height: 30px;
+      align-self: center;
     }
-}    
+  }
+  > p {
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    align-self: center;
+  }
+}
+.ProfileImg {
+  align-self: center;
+  > Img {
+    height: 30px;
+  }
+}
 
 /* ================================================= */
 /* Footer */
 
 .Footer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  padding: 25px 50px;
+  background-color: var(--background);
+}
+
+.F_Left {
+  flex: 1;
+  > img {
+    height: 30px;
+    width: 80px;
+    align-self: center;
+  }
+  > div {
+    > p {
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      align-self: center;
+    }
+  }
+}
+
+.F_Middle {
+  flex: 1;
+  > p {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    align-self: center;
+  }
+}
+
+.F_Right {
+  flex: 1;
+  > p {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    align-self: center;
+  }
+}
+
+/* ===================================================== */
+
+.sub-container {
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  border-radius: 5px;
+  max-width: 400px;
+}
+
+.input-section {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.email-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--background);
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.button-section {
+  margin-left: 10px;
+}
+
+.subscribe-button {
+  padding: 8px 16px;
+  background-color: var(--text);
+  color: var(--background);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.subscribe-button:hover {
+  background-color: var(--hover-color);
 }
