@@ -6,90 +6,77 @@ function RegField() {
   return (
     <div className="RF">
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="verifID">
+          VerifID <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="verifID"
+          name="verifID"
+          placeholder="Enter your VerifID"
+          className="input-field"
+        />
       </div>
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="password">
+          Password <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          className="input-field"
+        />
       </div>
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="verifID">
+          VerifID <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="verifID"
+          name="verifID"
+          placeholder="Enter your VerifID"
+          className="input-field"
+        />
       </div>
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="password">
+          Password <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          className="input-field"
+        />
       </div>
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="verifID">
+          VerifID <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="verifID"
+          name="verifID"
+          placeholder="Enter your VerifID"
+          className="input-field"
+        />
       </div>
       <div className="form-group">
-        <div className="fg_content">
-          <label htmlFor="firstName">
-            First Name <span className="required">*</span>
-          </label>
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="Ramesh"
-            className="input-field"
-          />
-        </div>
+        <label htmlFor="password">
+          Password <span className="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          className="input-field"
+        />
       </div>
-     
     </div>
   );
 }

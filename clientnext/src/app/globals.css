@@ -1,15 +1,48 @@
 /* NEED TO CREATE VARIABLES FOR COLORS TO ENABLE DARK LIGHT MODE */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 :root {
   --text: #011c4b;
+  --text75: #3c5175;
+  --text50: #748096;
   --background: #f7fafd;
   --primary: #3566d0;
   --secondary: #01a1fe;
+  --secondary30: #addffd;
+   --box: #d9f1ff;
   --accent: #00e67a;
-  --box: #d9f1ff;
   --hover-color: #ff5722;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div{
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  font-size: 60px;
+  font-family: "Montserrat", system-ui;
+  color: var(--text);
+  margin:0;
+}
+
+h3{
+  font-size: 30px;
+  font-family: "Montserrat", system-ui;
+  color: var(--text);
+  margin:0;
+}
+
+p{
+  font-size: 20px;
+  font-family: "Nunito", system-ui;
+  color: var(--text75);
+  margin: 0px;
 }
 
 .Nav {
@@ -17,13 +50,14 @@
   flex-direction: row;
   flex: 1;
   background-color: var(--background);
-  padding: 25px 50px;
+  padding: 25px 65px;
 }
 .nav-link {
   text-decoration: none; /* Removes underline */
   color: var(--text); /* Default color */
-  font-size: 16px;
-  font-family: "Inter", sans-serif;
+  align-self: start;
+  font-size: 20px;
+  font-family: "Inter", system-ui;
   transition: color 0.3s ease; /* Smooth transition for hover effect */
   cursor: pointer; /* Adds pointer cursor */
 }
@@ -35,33 +69,32 @@
 
 .Left {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  flex: 1;
-  margin-right: 100px;
+  flex: 2;
+  margin-right: 500px;
   > img {
     height: 30px;
-    width: 80px;
+    width: 88px;
     align-self: center;
   }
 }
 .Right {
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  flex: 2;
+  flex: 3;
   > div {
     align-self: center;
     > img {
-      height: 30px;
+      height: 31.05px;
+      width: 69px;
       align-self: center;
     }
   }
   > p {
-    font-size: 16px;
-    font-family: "Inter", sans-serif;
     color: var(--text);
-    align-self: center;
   }
 }
 .ProfileImg {
@@ -77,55 +110,56 @@
 .Footer {
   display: flex;
   flex-direction: row;
-  padding: 25px 50px;
+  justify-content: center;
+  margin: 20px;
+  padding: 45px;
+  height: 300px;
   background-color: var(--background);
+  flex:1;
 }
 
 .F_Left {
+  height: 200px;
+  display: flex;
   flex: 1;
+  align-self: flex-start;
   > img {
     height: 30px;
-    width: 80px;
-    align-self: center;
+    width: 88.32px;
   }
-  > div {
-    > p {
-      font-size: 14px;
-      font-family: "Inter", sans-serif;
-      color: var(--text);
-      align-self: center;
-    }
-  }
+}
+.top{
+  margin: 24px 0;
+}
+
+.bottom{
+  margin: 24px 0;
+  color: var(--text);
 }
 
 .F_Middle {
+  height: 200px;
   flex: 1;
-  > p {
-    font-size: 14px;
-    font-family: "Inter", sans-serif;
-    color: var(--text);
-    align-self: center;
-  }
+  display: flex;
+  align-self: flex-start;
 }
 
 .F_Right {
+  height: 200px;
   flex: 1;
-  > p {
-    font-size: 14px;
-    font-family: "Inter", sans-serif;
-    color: var(--text);
-    align-self: center;
-  }
+  display: flex;
+  align-self: flex-start;
 }
 
 /* ===================================================== */
 
 .sub-container {
+  margin: 24px 0;
   display: flex;
-  /* flex-direction: row; */
+  flex-direction: row;
   align-items: center;
   border-radius: 5px;
-  max-width: 400px;
+  max-width: 487.74px;
 }
 
 .input-section {
@@ -138,7 +172,11 @@
   padding: 8px;
   border: 1px solid var(--background);
   border-radius: 3px;
-  font-size: 16px;
+}
+
+::placeholder{
+  color: var(--text50);
+  font-size: 20px;
 }
 
 .button-section {
@@ -158,99 +196,172 @@
   background-color: var(--hover-color);
 }
 
-/* =============================================== */
+/* ===================================================== */
+
+.HeroSection {
+  display: flex;                     /* Enable Flexbox */
+  flex-direction: row;            /* Stack children vertically */
+  align-items: center;               /* Center items horizontally */
+  justify-content: space-between;           /* Center items vertically */
+  padding:  140px;
+  width: 100%;
+  flex:1;                     /* Add padding around the section */
+  background-color: var(--background); /* Use your variable for background */
+}
+
+.HeroImage {
+  display: flex;                     /* Enable Flexbox for image container */
+  justify-content: center;           /* Center image horizontally */
+  width: 631px;
+  height: 469.76px;
+  flex:1;                       /* Make image container full width */
+}
+
+.HeroHeader {
+  text-align: left;               /* Center text horizontally */
+  margin: 20px 0;
+  flex:1;                   /* Add vertical margins */
+}
+
+.TrustTextPrimary {
+  background: conic-gradient(
+    from 45deg,            /* Set the starting angle of the gradient */
+    var(--accent),              /* Gradient color 1 */
+    #1B418D,              /* Gradient color 2 */
+    #3566D0,              /* Gradient color 3 */
+    var(--primary)               /* Gradient color 4 */
+  );
+  -webkit-background-clip: text; /* Clip the background to the text */
+  -webkit-text-fill-color: transparent; /* Make the text color transparent */
+}
+
+.HeroText {
+  text-align: left;               /* Center text horizontally */
+  margin: 55px 0;                   /* Add vertical margins */
+  color: var(--text75);             /* Use your color variable */
+  font-size: 20px;                  /* Font size for description */
+  font-family: 'Nunito', sans-serif; /* Use your font family */
+}
+
+.HeroButtons {
+  display: flex;                    /* Enable Flexbox for buttons */
+  flex-direction: row;
+  justify-content: space-between;          /* Center buttons horizontally */
+  margin-top: 55px;                 /* Add top margin */
+}
+
+button {
+  width: 185px;
+  height: 47px;              /* Add padding to buttons */
+  border: none;                    /* Remove default border */
+  border-radius: 8px;              /* Rounded corners */
+  cursor: pointer;                  /* Change cursor on hover */
+  font-family: 'Nunito', sans-serif; /* Use your font family */
+  >p{
+    color:var(--text)
+  }
+}
+
+.primary {
+  background-color: var(--secondary30); /* Use your primary color */
+  color: var(--text);          /* Text color */
+  border: 2px solid var(--text);
+}
+
+.secondary {
+  background-color: var(--accent); /* Use your secondary color */
+  color: var(--text);           /* Text color */
+  border: 2px solid var(--text);
+}
+
+.dotted{
+  background-color: transparent;
+  border: 2px solid var(--accent);
+}
+
+/* Optional: Add hover effects */
+.primary:hover {
+  background-color: var(--hover-color); /* Change color on hover */
+}
+
+.secondary:hover {
+  background-color: var(--hover-color); /* Change color on hover */
+}
+
+.dotted:hover {
+  background-color: var(--hover-color); /* Change color on hover */
+  border: 2px solid var(--text);
+}
+
+/* ===================================================== */
 
 .WBox {
-  display: flex;
-  flex-direction: column;
   background-color: var(--box);
   align-items: center;
-  padding: 50px;
+  padding: 60px;
   border-radius: 40px;
-  margin: 50px;
+  margin: 65px;
 }
 
 .WB_Head {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex: 1;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   width: 100%;
+  >p{
+    color: #000;
+  };
 }
 
 .WB_Title {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center the text */
-    width: 100%; /* Ensures it stretches across */
-    position: relative; /* Set position to relative for absolute positioning */
-  }
-  
-  .WB_Title img {
-    position: absolute; /* Position the image absolutely */
-    left: 10px; /* Adjust as needed to place it at the corner */
-    height: 25px; /* Maintain height */
-    width: 25px; /* Maintain width */
-  }
-  
-  .WB_Title h1 {
-    margin: 0; /* Remove margin to avoid extra space */
-  }
-  
-  
-
-.WB_Cap {
-  margin: auto;
+  align-items: center;
+  justify-content: center; /* Center the text */
+  width: 100%; /* Ensures it stretches across */
+  position: relative; /* Set position to relative for absolute positioning */
 }
+  
+.WB_Title img {
+  position: absolute; /* Position the image absolutely */
+  left: 10px; /* Adjust as needed to place it at the corner */
+  height: 45px; /* Maintain height */
+  width: 45px; /* Maintain width */
+}
+
 .form-group {
   margin-bottom: 16px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
 }
 
 .fg_content {
   width: 100%;
-  display: flex; /* Flexbox for alignment */
-  flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
 }
 
-/* Additional styling for the label and input field */
 label {
-  font-weight: 400;
   font-size: 20px;
   margin-bottom: 8px;
   color: var(--text);
-  text-align: left; /* Center the text */
-  align-self: start;
+  text-align: left;
 }
 
 .input-field {
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 2px solid #7ca2c7;
-  border-radius: 4px;
+  padding: 12px;
+  font-size: 15px;
+  border: 2px solid var(--text50);
+  color: var(--text50);
+  border-radius: 8px;
   background-color: transparent;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  outline: none;
-  width: 95%; /* Keep width as is or adjust to your preference */
   text-align: left; /* Center text within the input field */
 }
 
 .required {
   color: red;
 }
+
 .RF {
-  display: flex;
-  flex-direction: column;
   flex: 1;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 100px;
+  margin: 0px 5%;
 }
 
 .input-field:focus {
@@ -258,48 +369,18 @@ label {
 }
 
 .RegFieldContainer {
-  display: flex;
   flex-direction: row;
-  flex: 1;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  > div {
-    flex: 1;
-  }
 }
+
 .LogFieldContainer {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 30%;
-    justify-content: space-between;
-    align-items: center;
-    > div {
-      flex: 1;
-    }
-  }
+  width: 30%;
+}
+
 .RegButtons {
-  display: flex;
   flex-direction: row;
-  margin: 50px 0px;
-}
-.ButtonLeft {
-  border-radius: 8px;
-  background-color: #00e67a;
-  margin-right: 25px;
-  padding: 10px 26px;
-  > p {
-    margin: 0px;
-  }
-}
-.ButtonRight {
-  border-radius: 8px;
-  background-color: transparent;
-  border: 3px solid #00e67a;
-  margin-left: 25px;
-  padding: 10px 20px;
-  > p {
-    margin: 0px;
-  }
+  justify-content: center;
+  gap: 25%;
+  width: 30%;
+  margin: 46px 0px;
 }

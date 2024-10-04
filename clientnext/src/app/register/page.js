@@ -15,24 +15,21 @@ function Register() {
             <img src="/Assets/Back.png" />
             <h1>Create Your VerifID Account</h1>
           </div>
-          <div className="WB_Cap">
-            <p>Secure your Digital Identity and get Verified today</p>
-          </div>
+          <p>Secure your Digital Identity and get Verified today</p>
         </div>
         <div className="RegFieldContainer">
           <RegField />
           <RegField />
         </div>
         <div className="RegButtons">
-          <div className="ButtonLeft">
+          <button className="secondary">
             <p>Register</p>
-          </div>
-          <div className="ButtonRight">
+          </button>
+          <button className="dotted">
             <p>Go to Login</p>
-          </div>
+          </button>
         </div>
       </div>
-
       <Footer />
     </div>
   );

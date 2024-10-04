@@ -1,13 +1,16 @@
-'use client'
+"use client";
 
 import React from "react";
-
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import HeroSection from "../components/herosection";
 
 function Land() {
   return (
     <div>
-    <p>Home</p>
-
+      <Navbar />
+      <HeroSection />
+      <Footer />
     </div>
   );
 }
