@@ -503,11 +503,10 @@ label {
   border-radius: 8px;
 }
 
-.customDropdownItem :hover {
+/* .customDropdownItem :hover {
   border:1px solid #e0e0e0;
   border-radius: 8px;
-   /* Change hover background color */
-}
+} */
 
 .text-danger{
   color: red;;

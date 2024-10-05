@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const axios = require('axios');
 const {
   createMockDID,
@@ -13,7 +14,12 @@ const {
 } = require('./veramoAgent');
 
 const app = express();
-const port = 3000;
+app.use(cors({
+  origin: '*', // Replace with your frontend URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+}));
+const port = 3001;
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
