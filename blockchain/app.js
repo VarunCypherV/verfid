@@ -4,14 +4,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
 const {
   createMockDID,
   issueMockCredential,
   storeCredential,
   getStoredCredentials,
   verifyAllCredentials,
-  publicKeyPem
-} = require('./veramoAgent');
+  revokeCredential, // New function for revocation
+  publicKeyPem,
+
+} = require('./veramoAgent1');
 
 const app = express();
 app.use(cors({
@@ -42,13 +45,9 @@ app.post('/issue-credential', (req, res) => {
   const { workerDid, jobDetails } = req.body;
 
   // Example job details if not provided
-  const exampleJobDetails = {
-    jobTitle: 'Delivery Driver',
-    completionDate: '2024-10-01',
-    description: 'Completed 45 deliveries in 5 hours for GigCo'
-  };
+  
 
-  const credential = issueMockCredential(workerDid, jobDetails || exampleJobDetails);
+  const credential = issueMockCredential(workerDid, jobDetails || jobDetails);
   res.json({ credential });
 });
 
@@ -105,6 +104,28 @@ app.post('/send-credentials', async (req, res) => {
     res.json({ employerVerificationResult: response.data });
   } catch (error) {
     res.status(500).json({ error: 'Error sending credentials to employer' });
+  }
+});
+
+app.post('/revoke-credential', (req, res) => {
+  const { credential } = req.body;
+
+  // Decode the credential (without verifying signature) to get the credential ID
+  const decoded = jwt.decode(credential);
+
+  if (!decoded || !decoded.credentialSubject || !decoded.credentialSubject.id) {
+      return res.status(400).json({ error: 'Invalid credential format' });
+  }
+
+  const credentialId = decoded.credentialSubject.id; // Extract the ID from the credential subject
+
+  // Revoke the credential using the decoded ID
+  const revoked = revokeCredential(credentialId);
+
+  if (revoked) {
+      res.json({ revoked: true, credentialId });
+  } else {
+      res.status(400).json({ error: 'Credential not found or already revoked' });
   }
 });
 

@@ -484,13 +484,36 @@ label {
   
 }
 
+/* .PFPB_Revoke {
+  border:2px solid red;
+  background-color:#f7fafd;
+  >p{
+    color: red;
+  }
+} */
+
+
 .PFPB_Revoke {
+  cursor: pointer; /* Default cursor */
   border:2px solid red;
   background-color:#f7fafd;
   >p{
     color: red;
   }
 }
+
+.PFPB_Revoke.disabled {
+  cursor: not-allowed; /* Change cursor when disabled */
+  pointer-events: none;
+  color: var(--text50); /* Greyed out text color */
+  opacity: 0.5; /* Make the button look disabled */
+  border:2px solid red;
+  background-color:#f7fafd;
+  >p{
+    color: red;
+  }
+}
+
 
 .customDropdown { /* Change background color */
   border-radius: 8px; /* Round corners */

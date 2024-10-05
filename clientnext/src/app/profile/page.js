@@ -1,109 +1,113 @@
-
-
 import React, { useState } from "react"; // Import useState
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import RegField from "../components/regFields";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
 
 // User data stored in JSON format
 const personal = {
   name: "Rajesh Kumar",
   year: "2021 BCSE 1000",
+  verifId: localStorage.getItem("verifId"),
+  issueDate: localStorage.getItem("verifIdIssueDate"),
 };
+
+// localStorage.setItem("verifId", "12344321");
+// localStorage.setItem("verifIdIssueDate", "13/10/2004");
 
 const initialUserData = [
   {
-    verifiedId: "121431234",
-    issueDate: "12/10/20",
+    verifId: personal.verifId || "Please Register",
+    issueDate: personal.issueDate || "-",
     credential: "-",
     credIssueDate: "-",
     employer: "-",
     localID: "-",
     status: "Create New With Action",
   },
-  {
-    verifiedId: "121431234",
-    issueDate: "12/10/20",
-    credential: "123423423",
-    credIssueDate: "12/10/23",
-    employer: "ding dong",
-    localID: "-",
-    status: "Created",
-  },
-  {
-    verifiedId: "121431234",
-    issueDate: "12/10/20",
-    credential: "12342313213423",
-    credIssueDate: "12/1123210/23",
-    employer: "ding dong",
-    localID: "-",
-    status: "Created",
-  }
 ];
-
+console.log(personal.verifId, personal.issueDate);
 function Profile() {
   const [UserData, setUserData] = useState(initialUserData); // Use state for UserData
 
   const handleCreateCred = async () => {
-    const workerDid = "yourWorkerDid"; // You can replace this with actual DID
+    const workerDid = personal.verifId; // You can replace this with actual DID
     // Get job details from user input using prompts
     const jobTitle = prompt("Enter Job Title:");
     const completionDate = prompt("Enter Completion Date (YYYY-MM-DD):");
     const description = prompt("Enter Job Description:");
-
+    const employer = prompt("Enter Employer");
     const jobDetails = {
       jobTitle: jobTitle,
+      employer: employer,
       completionDate: completionDate,
       description: description,
     };
 
     try {
       // Hit the issue-credential API
-      const issueResponse = await fetch("http://localhost:3001/issue-credential", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ workerDid, jobDetails }),
-      });
+      const issueResponse = await fetch(
+        "http://localhost:3001/issue-credential",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ workerDid, jobDetails }),
+        }
+      );
 
       const issueData = await issueResponse.json();
       const { credential } = issueData;
-
-      console.log("Credential Issued:", credential);
 
       // Generate a random 5-digit Local ID
       const localId = Math.floor(10000 + Math.random() * 90000).toString();
 
       // Store the issued credential in local storage as an array of objects
-      let issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+      let issuedCredentials =
+        JSON.parse(localStorage.getItem("issuedCredentials")) || [];
       issuedCredentials.push({ localId, credential });
-      localStorage.setItem("issuedCredentials", JSON.stringify(issuedCredentials));
+      localStorage.setItem(
+        "issuedCredentials",
+        JSON.stringify(issuedCredentials)
+      );
 
       // Add the new credential to the top of the UserData array
       const newUser = {
-        verifiedId: localStorage.getItem("DID") || "1231123",
-        issueDate: localStorage.getItem("DID_Date") || "8/10/24",
+        verifiedId: localStorage.getItem("DID"),
+        issueDate: localStorage.getItem("DID_Date"),
         credential: credential,
         credIssueDate: new Date().toLocaleDateString(),
-        employer: "newEmployer",
-        localID: localId,  // Associate the Local ID
+        employer: employer,
+        jobTitle: jobTitle,
+        localID: localId, // Associate the Local ID
         status: "Created",
       };
 
       // Add the new user data to the top of the array
-      setUserData((prevData) => [...prevData.slice(0, 1), newUser, ...prevData.slice(1)]); // Update state to re-render
+      setUserData((prevData) => [
+        ...prevData.slice(0, 1),
+        newUser,
+        ...prevData.slice(1),
+      ]); // Update state to re-render
       alert("Successfully Check Immediately Below");
 
       // Hit the store-credential API
-      const storeResponse = await fetch("http://localhost:3001/store-credential", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ credential }),
-      });
+      const storeResponse = await fetch(
+        "http://localhost:3001/store-credential",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ credential }),
+        }
+      );
 
       const storeData = await storeResponse.json();
     } catch (error) {
@@ -112,107 +116,61 @@ function Profile() {
   };
   const handleVerifyCred = (localID) => {
     // Retrieve issued credentials from localStorage
-    const issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
-    
+    const issuedCredentials =
+      JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+
     // Filter the credentials by localID
     const credentialsToVerify = issuedCredentials
-        .filter(item => item.localId === localID)
-        .map(item => item.credential);
-
+      .filter((item) => item.localId === localID)
+      .map((item) => item.credential);
+    console.log(credentialsToVerify);
     if (credentialsToVerify.length === 0) {
-        console.log("No credentials found for the selected Local ID.");
-        return;
+      console.log("No credentials found for the selected Local ID.");
+      return;
     }
 
     // Hit the verify-all-credentials API
     fetch("http://localhost:3001/verify-all-credentials", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ credentials: credentialsToVerify }),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ credentials: credentialsToVerify }),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Verification Results:", data.results);
-
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
         // Find the index of the credential being verified
-        const index = UserData.findIndex(user => user.localID === localID);
-        
+        const index = UserData.findIndex((user) => user.localID === localID);
         // If the credential is valid, update its status to "VERIFIED"
         if (data.results[0].valid === true) {
-            alert("Verification Successful");
+          alert("Verification Successful");
 
-            // Update the UserData state with the new status
-            setUserData(prevData => {
-                // Create a new array to hold the updated data
-                const newData = [...prevData];
-                newData[index] = { ...newData[index], status: "VERIFIED" }; // Update status
-                
-                // Move verified credentials down
-                const verified = newData.filter(user => user.status === "VERIFIED");
-                const unverified = newData.filter(user => user.status !== "VERIFIED");
+          // Update the UserData state with the new status
+          setUserData((prevData) => {
+            // Create a new array to hold the updated data
+            const newData = [...prevData];
+            newData[index] = { ...newData[index], status: "VERIFIED" }; // Update status
 
-                // Return the reordered array
-                return [...unverified, ...verified];
-            });
+            // Move verified credentials down
+            const verified = newData.filter(
+              (user) => user.status === "VERIFIED"
+            );
+            const unverified = newData.filter(
+              (user) => user.status !== "VERIFIED"
+            );
+
+            // Return the reordered array
+            return [...unverified, ...verified];
+          });
         } else {
-            alert("Verification Failed");
+          alert("Verification Failed");
         }
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         console.error("Error verifying credentials:", error);
-    });
-};
-
-//   const handleVerifyCred = (localID) => {
-//     // Retrieve issued credentials from localStorage
-//     const issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
-    
-//     // Filter the credentials by localID
-//     const credentialsToVerify = issuedCredentials
-//         .filter(item => item.localId === localID)
-//         .map(item => item.credential);
-
-//     if (credentialsToVerify.length === 0) {
-//         console.log("No credentials found for the selected Local ID.");
-//         return;
-//     }
-
-//     // Hit the verify-all-credentials API
-//     fetch("http://localhost:3001/verify-all-credentials", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ credentials: credentialsToVerify }),
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//         console.log("Verification Results:", data.results);
-
-//         // Find the index of the credential being verified
-//         const index = UserData.findIndex(user => user.localID === localID);
-        
-//         // If the credential is valid, update its status to "VERIFIED"
-//         if (data.results[0].valid === true) {
-//             alert("Verification Successful");
-
-//             // Update the UserData state with the new status
-//             setUserData(prevData => {
-//                 const newData = [...prevData];
-//                 newData[index] = { ...newData[index], status: "VERIFIED" }; // Update status
-//                 return newData; // Return updated array
-//             });
-//         } else {
-//             alert("Verification Failed");
-//         }
-//     })
-//     .catch(error => {
-//         console.error("Error verifying credentials:", error);
-//     });
-// };
-
+      });
+  };
 
   // Action handler for dropdown
   const handleAction = (key, localID) => {
@@ -221,18 +179,69 @@ function Profile() {
         handleCreateCred();
         break;
       case "verify":
-        handleVerifyCred(localID);  // Pass localID when verifying
+        handleVerifyCred(localID); // Pass localID when verifying
         break;
       default:
         console.log("Unknown action");
     }
   };
 
-  const truncateString = (str, maxLength) => {
-    if (str.length > maxLength) {
-      return str.slice(0, maxLength) + "...";
+  const truncateString = (str, x) => {
+    if (str.length > 2 * x) {
+      return str.slice(0, x) + "..." + str.slice(-x);
     }
     return str;
+  };
+
+  const handleRevoke = (localID) => {
+    // Retrieve issued credentials from localStorage
+    const issuedCredentials =
+      JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+
+    // Find the credential associated with the localID
+
+    const credentialToRevoke = issuedCredentials.find(
+      (item) => item.localId === localID
+    );
+
+    if (!credentialToRevoke) {
+      console.log("No credential found for the selected Local ID.");
+      return;
+    }
+
+    // Hit the revoke-credential API
+    fetch("http://localhost:3001/revoke-credential", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ credential: credentialToRevoke.credential }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.revoked) {
+          alert("Credential revoked successfully");
+
+          // Update UserData state by removing the revoked credential
+          setUserData((prevData) =>
+            prevData.filter((user) => user.localID !== localID)
+          );
+
+          // Remove the revoked credential from localStorage
+          const updatedIssuedCredentials = issuedCredentials.filter(
+            (item) => item.localId !== localID
+          );
+          localStorage.setItem(
+            "issuedCredentials",
+            JSON.stringify(updatedIssuedCredentials)
+          );
+        } else {
+          alert("Revocation failed: " + (data.error || "Unknown error"));
+        }
+      })
+      .catch((error) => {
+        console.error("Error revoking credential:", error);
+      });
   };
 
   return (
@@ -265,13 +274,16 @@ function Profile() {
         <div className="PFP_Block" key={index}>
           <div className="PFPB_Left">
             <p>
-              Verified: <span>{user.verifiedId}</span>
+              Verified: <span>{personal.verifId}</span>
             </p>
             <p>
-              Date of Issue: <span>{user.issueDate || "-"}</span>
+              Date of Issue: <span>{personal.issueDate || "-"}</span>
             </p>
             <p>
               Employer: <span>{user.employer || "-"}</span>
+            </p>
+            <p>
+              jobTitle: <span>{user.jobTitle || "-"}</span>
             </p>
           </div>
           <div className="PFPB_Right">
@@ -279,7 +291,10 @@ function Profile() {
               LocalID: <span>{user.localID || "-"}</span>
             </p>
             <p>
-              Credential: <span>{truncateString(user.credential || "Create With Action", 45)}</span>
+              Credential:{" "}
+              <span>
+                {truncateString(user.credential || "Create With Action", 15)}
+              </span>
             </p>
             <p>
               Date of Issue: <span>{user.credIssueDate || "-"}</span>
@@ -301,7 +316,11 @@ function Profile() {
                 aria-label="Static Actions"
                 onAction={(key) => handleAction(key, user.localID)} // Pass localID to action handler
                 disabledKeys={
-                  user.status === "Create New With Action" ? ["verify"] : ["create"]
+                  !personal.verifId
+                    ? ["verify", "create"]
+                    : user.status === "Create New With Action"
+                    ? ["verify"]
+                    : ["create"]
                 }
               >
                 <DropdownItem className="customDropdownItem" key="create">
@@ -313,7 +332,12 @@ function Profile() {
               </DropdownMenu>
             </Dropdown>
 
-            <div className="PFPB_Revoke">
+            <div
+              className={`PFPB_Revoke ${
+                user.status === "VERIFIED" ? "disabled" : ""
+              }`}
+              onClick={() => handleRevoke(user.localID)}
+            >
               <p>REVOKE</p>
             </div>
           </div>
