@@ -1,5 +1,9 @@
 /* NEED TO CREATE VARIABLES FOR COLORS TO ENABLE DARK LIGHT MODE */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --text: #011c4b;
   --text75: #3c5175;
@@ -8,37 +12,37 @@
   --primary: #3566d0;
   --secondary: #01a1fe;
   --secondary30: #addffd;
-   --box: #d9f1ff;
+  --box: #d9f1ff;
   --accent: #00e67a;
   --hover-color: #ff5722;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-div{
+div {
   display: flex;
   flex-direction: column;
 }
 
-h1{
+h1 {
   font-size: 60px;
   font-family: "Montserrat", system-ui;
   color: var(--text);
-  margin:0;
+  margin: 0;
 }
 
-h3{
+h3 {
   font-size: 30px;
   font-family: "Montserrat", system-ui;
   color: var(--text);
-  margin:0;
+  margin: 0;
 }
 
-p{
+p {
   font-size: 20px;
   font-family: "Nunito", system-ui;
   color: var(--text75);
@@ -115,11 +119,11 @@ p{
   padding: 45px;
   height: 300px;
   background-color: var(--background);
-  flex:1;
+  flex: 1;
 }
 
 .F_Left {
-  height: 200px;
+  height: 100%;;
   display: flex;
   flex: 1;
   align-self: flex-start;
@@ -128,24 +132,24 @@ p{
     width: 88.32px;
   }
 }
-.top{
+.top {
   margin: 24px 0;
 }
 
-.bottom{
+.bottom {
   margin: 24px 0;
   color: var(--text);
 }
 
 .F_Middle {
-  height: 200px;
+  height: 100%;;
   flex: 1;
   display: flex;
   align-self: flex-start;
 }
 
 .F_Right {
-  height: 200px;
+  height: 100%;;
   flex: 1;
   display: flex;
   align-self: flex-start;
@@ -174,7 +178,7 @@ p{
   border-radius: 3px;
 }
 
-::placeholder{
+::placeholder {
   color: var(--text50);
   font-size: 20px;
 }
@@ -199,82 +203,82 @@ p{
 /* ===================================================== */
 
 .HeroSection {
-  display: flex;                     /* Enable Flexbox */
-  flex-direction: row;            /* Stack children vertically */
-  align-items: center;               /* Center items horizontally */
-  justify-content: space-between;           /* Center items vertically */
-  padding:  140px;
+  display: flex; /* Enable Flexbox */
+  flex-direction: row; /* Stack children vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: space-between; /* Center items vertically */
+  padding: 140px;
   width: 100%;
-  flex:1;                     /* Add padding around the section */
+  flex: 1; /* Add padding around the section */
   background-color: var(--background); /* Use your variable for background */
 }
 
 .HeroImage {
-  display: flex;                     /* Enable Flexbox for image container */
-  justify-content: center;           /* Center image horizontally */
+  display: flex; /* Enable Flexbox for image container */
+  justify-content: center; /* Center image horizontally */
   width: 631px;
   height: 469.76px;
-  flex:1;                       /* Make image container full width */
+  flex: 1; /* Make image container full width */
 }
 
 .HeroHeader {
-  text-align: left;               /* Center text horizontally */
+  text-align: left; /* Center text horizontally */
   margin: 20px 0;
-  flex:1;                   /* Add vertical margins */
+  flex: 1; /* Add vertical margins */
 }
 
 .TrustTextPrimary {
   background: conic-gradient(
-    from 45deg,            /* Set the starting angle of the gradient */
-    var(--accent),              /* Gradient color 1 */
-    #1B418D,              /* Gradient color 2 */
-    #3566D0,              /* Gradient color 3 */
-    var(--primary)               /* Gradient color 4 */
+    from 45deg,
+    /* Set the starting angle of the gradient */ var(--accent),
+    /* Gradient color 1 */ #1b418d,
+    /* Gradient color 2 */ #3566d0,
+    /* Gradient color 3 */ var(--primary) /* Gradient color 4 */
   );
   -webkit-background-clip: text; /* Clip the background to the text */
   -webkit-text-fill-color: transparent; /* Make the text color transparent */
 }
 
 .HeroText {
-  text-align: left;               /* Center text horizontally */
-  margin: 55px 0;                   /* Add vertical margins */
-  color: var(--text75);             /* Use your color variable */
-  font-size: 20px;                  /* Font size for description */
-  font-family: 'Nunito', sans-serif; /* Use your font family */
+  text-align: left; /* Center text horizontally */
+  margin: 55px 0; /* Add vertical margins */
+  color: var(--text75); /* Use your color variable */
+  font-size: 20px; /* Font size for description */
+  font-family: "Nunito", sans-serif; /* Use your font family */
 }
 
 .HeroButtons {
-  display: flex;                    /* Enable Flexbox for buttons */
+  display: flex; /* Enable Flexbox for buttons */
   flex-direction: row;
-  justify-content: space-between;          /* Center buttons horizontally */
-  margin-top: 55px;                 /* Add top margin */
+  justify-content: space-between; /* Center buttons horizontally */
+  margin-top: 55px; /* Add top margin */
 }
 
 button {
   width: 185px;
-  height: 47px;              /* Add padding to buttons */
-  border: none;                    /* Remove default border */
-  border-radius: 8px;              /* Rounded corners */
-  cursor: pointer;                  /* Change cursor on hover */
-  font-family: 'Nunito', sans-serif; /* Use your font family */
-  >p{
-    color:var(--text)
+  height: 47px; /* Add padding to buttons */
+  border: none; /* Remove default border */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-family: "Nunito", sans-serif; /* Use your font family */
+  > p {
+    color: var(--text);
   }
 }
 
 .primary {
   background-color: var(--secondary30); /* Use your primary color */
-  color: var(--text);          /* Text color */
+  color: var(--text); /* Text color */
   border: 2px solid var(--text);
 }
 
 .secondary {
   background-color: var(--accent); /* Use your secondary color */
-  color: var(--text);           /* Text color */
+  color: var(--text); /* Text color */
   border: 2px solid var(--text);
 }
 
-.dotted{
+.dotted {
   background-color: transparent;
   border: 2px solid var(--accent);
 }
@@ -309,9 +313,9 @@ button {
   flex: 1;
   margin-bottom: 60px;
   width: 100%;
-  >p{
+  > p {
     color: #000;
-  };
+  }
 }
 
 .WB_Title {
@@ -320,7 +324,7 @@ button {
   width: 100%; /* Ensures it stretches across */
   position: relative; /* Set position to relative for absolute positioning */
 }
-  
+
 .WB_Title img {
   position: absolute; /* Position the image absolutely */
   left: 10px; /* Adjust as needed to place it at the corner */
@@ -383,4 +387,130 @@ label {
   gap: 25%;
   width: 30%;
   margin: 46px 0px;
+}
+
+/* =================== */
+.PFP_Title {
+  align-items: center;
+  justify-content: center; /* Center the text */
+  width: 100%; /* Ensures it stretches across */
+  position: relative; /* Set position to relative for absolute positioning */
+}
+
+.PFP_Name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0px;
+}
+.PFP_Name p {
+  font-size: 40px;
+  margin-right: 10px;
+}
+.bluetick {
+  height: 40px;
+  width: 40px;
+}
+.back {
+  position: absolute;
+  left: 10px;
+  height: 45px;
+  width: 45px;
+}
+
+.user {
+  height: 250px;
+  width: 250px;
+}
+
+.PFP_Block {
+  background-color: var(--box);
+  align-items: center;
+  padding: 60px 125px;
+  border-radius: 40px;
+  margin: 65px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.PFPB_Left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.PFPB_Right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.PFPB_Left p, .PFPB_Right p {
+  font-weight: bold;
+  margin: 12.5px 0px;
+}
+
+.PFPB_Left span, .PFPB_Right span {
+  font-weight:400;
+}
+.PFPB_Button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.PFPB_Button div{
+  margin: 25px 0px;
+  padding:10px 50px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.PFPB_Action {
+  background-color: #011c4b;
+  display: flex;
+  flex-direction: row;
+  >p{
+      color: #f7fafd;
+      margin-right: 10%;
+    }
+  >img {
+    height: 30px;
+    width: 30px;
+  }
+  
+}
+
+.PFPB_Revoke {
+  border:2px solid red;
+  background-color:#f7fafd;
+  >p{
+    color: red;
+  }
+}
+
+.customDropdown { /* Change background color */
+  border-radius: 8px; /* Round corners */
+  background-color: #011c4b;
+}
+
+.customDropdownItem {
+  color: white; /* Change text color */
+  padding: 10px 50px;
+  border-radius: 8px;
+}
+
+.customDropdownItem :hover {
+  border:1px solid #e0e0e0;
+  border-radius: 8px;
+   /* Change hover background color */
+}
+
+.text-danger{
+  color: red;;
+  padding: 10px 50px;
+  border-radius: 8px;
 }

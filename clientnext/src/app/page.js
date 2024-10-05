@@ -10,9 +10,10 @@ import Login from "./Login/page";
 export default function Home() {
   return (
     <div>
-      <Land />
+      {/* <Land />
       <Register />
-      <Login />
+      <Login /> */}
+      <Profile/>
     </div>
   );
 }
