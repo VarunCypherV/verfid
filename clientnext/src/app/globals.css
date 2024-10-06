@@ -1,5 +1,5 @@
 /* NEED TO CREATE VARIABLES FOR COLORS TO ENABLE DARK LIGHT MODE */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,6 +21,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 div {
@@ -30,23 +32,26 @@ div {
 
 h1 {
   font-size: 60px;
-  font-family: "Montserrat", system-ui;
+  font-family: "Montserrat";
   color: var(--text);
   margin: 0;
+  font-weight: 600;
 }
 
 h3 {
   font-size: 30px;
-  font-family: "Montserrat", system-ui;
+  font-family: "Montserrat";
   color: var(--text);
   margin: 0;
+  font-weight: 600;
 }
 
 p {
   font-size: 20px;
-  font-family: "Nunito", system-ui;
+  font-family: "Inter";
   color: var(--text75);
   margin: 0px;
+  font-weight: 400;
 }
 
 .Nav {
@@ -54,14 +59,14 @@ p {
   flex-direction: row;
   flex: 1;
   background-color: var(--background);
-  padding: 25px 65px;
+  padding: 25px 120px;
 }
 .nav-link {
   text-decoration: none; /* Removes underline */
   color: var(--text); /* Default color */
   align-self: start;
   font-size: 20px;
-  font-family: "Inter", system-ui;
+  font-family: "Inter";
   transition: color 0.3s ease; /* Smooth transition for hover effect */
   cursor: pointer; /* Adds pointer cursor */
 }
@@ -115,8 +120,8 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 20px;
-  padding: 45px;
+  margin: 60px;
+  padding: 60px;
   height: 300px;
   background-color: var(--background);
   flex: 1;
@@ -207,7 +212,7 @@ p {
   flex-direction: row; /* Stack children vertically */
   align-items: center; /* Center items horizontally */
   justify-content: space-between; /* Center items vertically */
-  padding: 140px;
+  padding: 120px;
   width: 100%;
   flex: 1; /* Add padding around the section */
   background-color: var(--background); /* Use your variable for background */
@@ -219,6 +224,7 @@ p {
   width: 631px;
   height: 469.76px;
   flex: 1; /* Make image container full width */
+  object-fit: contain;
 }
 
 .HeroHeader {
@@ -244,7 +250,7 @@ p {
   margin: 55px 0; /* Add vertical margins */
   color: var(--text75); /* Use your color variable */
   font-size: 20px; /* Font size for description */
-  font-family: "Nunito", sans-serif; /* Use your font family */
+  font-family: "Inter", sans-serif; /* Use your font family */
 }
 
 .HeroButtons {
@@ -260,7 +266,7 @@ button {
   border: none; /* Remove default border */
   border-radius: 8px; /* Rounded corners */
   cursor: pointer; /* Change cursor on hover */
-  font-family: "Nunito", sans-serif; /* Use your font family */
+  font-family: "Inter", sans-serif; /* Use your font family */
   > p {
     color: var(--text);
   }
@@ -299,6 +305,172 @@ button {
 
 /* ===================================================== */
 
+.product-goals-section {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--text);
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  padding: 120px;
+}
+
+.goal-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background);
+  border-radius: 40px;
+  padding: 40px;
+  flex: 1;
+  text-align: left;
+  color: var(--text);
+}
+.goal-card.left{
+  text-align: center;
+}
+.person-image {
+  width: 100%;
+  border-radius: 40px;
+  object-fit: contain;
+}
+
+.goal-image {
+  width: 100%;
+  border-radius: 40px;
+  object-fit: contain;
+}
+
+.goal-col{
+  flex:1;
+  gap:20px;
+}
+
+/* ===================================================== */
+
+.about-us-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px;
+  background-color: #f7fafd;
+  > h1{
+    color: var(--text);
+    margin-bottom: 120px;
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  color: var(--background);
+}
+
+.card.blue {
+  background-color: var(--text);
+  grid-column: span 2;
+  > h3{
+    color: var(--background);
+  }
+}
+
+.card.blue-light {
+  background-color: var(--primary);
+  > h3, p{
+    color: var(--background);
+  }
+}
+
+.card.blue-lighter {
+  background-color: var(--secondary30);
+  > h3{
+    color: var(--text);
+  }
+}
+
+.card.green {
+  background-color: var(--accent);
+  color: var(--text);
+  > h3, p{
+    color: var(--text);
+  }
+}
+
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
+.card.large {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.card.medium {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.card.small {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+/* ===================================================== */
+.architecture-workflow-section {
+  display: flex;
+  gap:60px;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--text);
+  color: var(--background);
+  padding: 120px;
+  text-align: center;
+  > h1{
+    color: var(--background);
+  }
+}
+
+.description {
+  max-width: 800px;
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: var(--background);
+}
+
+.gif-container {
+  background-color: var(--background);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.gif-container img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+
+/* ===================================================== */
 .WBox {
   background-color: var(--box);
   align-items: center;
@@ -521,7 +693,7 @@ label {
 }
 
 .customDropdownItem {
-  color: white; /* Change text color */
+  color: var(--background); /* Change text color */
   padding: 10px 50px;
   border-radius: 8px;
 }
