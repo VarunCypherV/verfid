@@ -1,14 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Subscribe from "./subscribe";
 
 function Footer() {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkTheme(true);
+    }
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const isDarkModeActive =
+            document.documentElement.classList.contains("dark-theme");
+          setIsDarkTheme(isDarkModeActive);
+        }
+      });
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+    });
+    return () => observer.disconnect(); // Cleanup observer when the component unmounts
+  }, []);
   return (
     <div className="Footer">
       <div className="F_Left">
-        <img className="top" src="/Assets/Logo.jpg" />
+        <img
+          src={isDarkTheme ? "/Assets/darklogo.png" : "/Assets/lightlogo.png"}
+        />
         <p>VerifID Headquarters</p>
         <p>#27, Taramani Road,</p>
         <p>Saidapet, Chennai - 96</p>

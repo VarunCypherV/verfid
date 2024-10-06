@@ -1,14 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 function ProductGoalsSection() {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
+      setIsDarkTheme(true);
+    }
+    const observer = new MutationObserver((mutationsList) => {
+      mutationsList.forEach((mutation) => {
+        if (mutation.attributeName === "class") {
+          const isDarkModeActive =
+            document.documentElement.classList.contains("dark-theme");
+          setIsDarkTheme(isDarkModeActive);
+        }
+      });
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+    });
+    return () => observer.disconnect(); // Cleanup observer when the component unmounts
+  }, []);
+
   return (
     <div class="product-goals-section">
       <div class="goal-card left">
         <h1>
           <u>PRODUCT GOALS</u>
         </h1>
-        <img src="/Assets/Product-man.png" class="person-image" />
+        <img
+          src={
+            isDarkTheme
+              ? "/Assets/Product-mandark.png"
+              : "/Assets/Product-manlight.png"
+          }
+        />
         <p>
           &#34;At the heart of our service is a deep commitment to honesty,
           integrity, and the people we serve&#34;

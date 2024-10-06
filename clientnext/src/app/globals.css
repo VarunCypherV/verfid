@@ -15,6 +15,33 @@
   --box: #d9f1ff;
   --accent: #00e67a;
   --hover-color: #ff5722;
+  --primary-button-text: #011c4b;
+  --secondary-button-text: #011c4b;
+  --box-text:#011c4b;
+  --arch-text: var(--background)
+  > body{
+    background-color: var(--background);
+  }
+}
+
+:root.dark-theme {
+  --text: #B4CFFE;
+  --text75: #90a6cd;
+  --text50: #020508;
+  --background: #020508;
+  --primary: #2F61CA;
+  --secondary: #01A1FE;
+  --secondary30: #023452;
+  --box: #f7fafd;
+  --accent: #1AFF94;
+  --hover-color: #ff5722;
+  --primary-button-text: white;
+  --secondary-button-text: #011c4b;
+  --box-text: #020508;
+  --arch-text: #B4CFFE;
+  > body{
+    background-color: var(--background);
+  }
 }
 
 * {
@@ -53,6 +80,22 @@ p {
   margin: 0px;
   font-weight: 400;
 }
+
+/* ================================================= */
+
+.theme-switcher {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* ================================================= */
 
 .Nav {
   display: flex;
@@ -97,7 +140,7 @@ p {
   > div {
     align-self: center;
     > img {
-      height: 31.05px;
+      height: 30px;
       width: 69px;
       align-self: center;
     }
@@ -267,25 +310,33 @@ button {
   border-radius: 8px; /* Rounded corners */
   cursor: pointer; /* Change cursor on hover */
   font-family: "Inter", sans-serif; /* Use your font family */
-  > p {
+  > p{
     color: var(--text);
   }
+  
 }
 
 .primary {
   background-color: var(--secondary30); /* Use your primary color */
-  color: var(--text); /* Text color */
-  border: 2px solid var(--text);
+  > p {
+    color: var(--primary-button-text);
+  }
+  border: 2px solid var(--background);
 }
 
 .secondary {
   background-color: var(--accent); /* Use your secondary color */
-  color: var(--text); /* Text color */
-  border: 2px solid var(--text);
+  > p {
+    color: var(--secondary-button-text);
+  }
+  border: 2px solid var(--background);
 }
 
 .dotted {
   background-color: transparent;
+  > p {
+    color: var(--box-text);
+  }
   border: 2px solid var(--accent);
 }
 
@@ -308,7 +359,7 @@ button {
 .product-goals-section {
   display: flex;
   flex-direction: row;
-  background-color: var(--text);
+  background-color: var(--box-text);
   justify-content: space-between;
   align-items: stretch;
   gap: 20px;
@@ -319,15 +370,18 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: var(--background);
+  background-color: var(--box);
   border-radius: 40px;
   padding: 40px;
   flex: 1;
   text-align: left;
-  color: var(--text);
+  > h1, h3, p{
+  color: var(--box-text);
+  }
 }
 .goal-card.left{
   text-align: center;
+  color: var(--box-text);
 }
 .person-image {
   width: 100%;
@@ -355,7 +409,7 @@ button {
   padding: 120px;
   background-color: #f7fafd;
   > h1{
-    color: var(--text);
+    color: var(--secondary-button-text);
     margin-bottom: 120px;
   }
 }
@@ -404,8 +458,8 @@ button {
 .card.green {
   background-color: var(--accent);
   color: var(--text);
-  > h3, p{
-    color: var(--text);
+  > h3, p, u{
+    color: var(--secondary-button-text);
   }
 }
 
@@ -436,12 +490,12 @@ button {
   gap:60px;
   flex-direction: column;
   align-items: center;
-  background-color: var(--text);
+  background-color: var(--box-text);
   color: var(--background);
   padding: 120px;
   text-align: center;
-  > h1{
-    color: var(--background);
+  > h1, p{
+    color: var(--arch-text);
   }
 }
 
@@ -495,6 +549,9 @@ button {
   justify-content: center; /* Center the text */
   width: 100%; /* Ensures it stretches across */
   position: relative; /* Set position to relative for absolute positioning */
+  >h1{
+    color: var(--box-text);
+  }
 }
 
 .WB_Title img {
@@ -516,7 +573,7 @@ button {
 label {
   font-size: 20px;
   margin-bottom: 8px;
-  color: var(--text);
+  color: var(--box-text);
   text-align: left;
 }
 
@@ -579,6 +636,7 @@ label {
 .PFP_Name p {
   font-size: 40px;
   margin-right: 10px;
+  color: var(--box-text);
 }
 .bluetick {
   height: 40px;
@@ -621,6 +679,7 @@ label {
 .PFPB_Left p, .PFPB_Right p {
   font-weight: bold;
   margin: 12.5px 0px;
+  color: var(--box-text);
 }
 
 .PFPB_Left span, .PFPB_Right span {
@@ -642,11 +701,11 @@ label {
 }
 
 .PFPB_Action {
-  background-color: #011c4b;
+  background-color: var(--text);
   display: flex;
   flex-direction: row;
   >p{
-      color: #f7fafd;
+      color: var(--background);
       margin-right: 10%;
     }
   >img {
@@ -680,7 +739,7 @@ label {
   color: var(--text50); /* Greyed out text color */
   opacity: 0.5; /* Make the button look disabled */
   border:2px solid red;
-  background-color:#f7fafd;
+  background-color:var(--background);
   >p{
     color: red;
   }
@@ -689,7 +748,7 @@ label {
 
 .customDropdown { /* Change background color */
   border-radius: 8px; /* Round corners */
-  background-color: #011c4b;
+  background-color: var(--text);
 }
 
 .customDropdownItem {

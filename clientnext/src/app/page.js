@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <div>
       <Land />
-      {/* <Register />
+      <Register />
       <Login />
-      <Profile /> */}
+      <Profile />
     </div>
   );
 }
