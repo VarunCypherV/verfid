@@ -31,7 +31,7 @@ function Navbar() {
     <div className="Nav">
       <div className="Left">
         <img
-          src={isDarkTheme ? "/Assets/darklogo.png" : "/Assets/lightlogo.png"}
+          src={isDarkTheme ? "/assets/darklogo.png" : "/assets/lightlogo.png"}
         />
       </div>
       <div className="Right">
@@ -50,7 +50,7 @@ function Navbar() {
         </Link>
         <Link href="/Profile" className="ProfileImg">
           <img
-          src={isDarkTheme ? "/Assets/darkprofile.png" : "/Assets/lightprofile.png"}
+          src={isDarkTheme ? "/assets/darkprofile.png" : "/assets/lightprofile.png"}
         />
         </Link>
       </div>
