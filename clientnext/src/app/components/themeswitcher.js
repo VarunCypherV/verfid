@@ -25,7 +25,7 @@ function ThemeSwitcher() {
   return (
     <div className="theme-switcher" onClick={toggleTheme}>
       <img
-        src={isDarkTheme ? "/Assets/DarkSwitch.png" : "/Assets/LightSwitch.png"}
+        src={isDarkTheme ? "/assets/DarkSwitch.png" : "/assets/LightSwitch.png"}
         alt="Theme Switcher"
         className="theme-icon"
       />
