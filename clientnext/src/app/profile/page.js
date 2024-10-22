@@ -154,7 +154,7 @@ function Profile() {
 
     try {
       // Hit the issue-credential API
-      const issueResponse = await fetch("https://verfid.vercel.app//issue-credential", {
+      const issueResponse = await fetch("https://verfid.vercel.app/issue-credential", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -194,7 +194,7 @@ function Profile() {
       alert("Successfully Check Immediately Below");
 
       // Hit the store-credential API
-      const storeResponse = await fetch("https://verfid.vercel.app//store-credential", {
+      const storeResponse = await fetch("https://verfid.vercel.app/store-credential", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -232,7 +232,7 @@ function Profile() {
     }
 
     // Hit the verify-all-credentials API
-    fetch("https://verfid.vercel.app//verify-all-credentials", {
+    fetch("https://verfid.vercel.app/verify-all-credentials", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -306,7 +306,7 @@ function Profile() {
     }
 
     // Hit the revoke-credential API
-    fetch("https://verfid.vercel.app//revoke-credential", {
+    fetch("https://verfid.vercel.app/revoke-credential", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
