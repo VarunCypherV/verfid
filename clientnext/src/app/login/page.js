@@ -42,7 +42,7 @@ function Login() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="WB_Title">
-            <img src="/Assets/Back.png" alt="Back" />
+            <img src="/assets/Back.png" alt="Back" />
             <h1>Welcome Back to VerifID</h1>
           </div>
           <p>Log in to stay connected and secure with VerifID</p>
