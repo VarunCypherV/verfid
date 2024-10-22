@@ -1,20 +1,23 @@
+
 "use client";
-import React, { useState, useEffect } from "react"; // Import useEffect
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import RegField from "../components/regFields";
+import RegFieldR from "../components/regFieldsR";
+import { useRouter } from "next/navigation";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
-import RegFieldR from "../components/regFieldsR";
+
 
 // Initialize personal state
 const initialPersonal = {
-  name: "Loading...", // Temporary loading state
+  FirstName: "Loading...",
+  LastName: "",
   year: "",
   verifId: "",
   issueDate: "",
@@ -28,61 +31,113 @@ const initialPersonal = {
 };
 
 function Profile() {
-  const [UserData, setUserData] = useState([]); // Use state for UserData
   const [personal, setPersonal] = useState(initialPersonal); // Use state for personal data
+  const [UserData, setUserData] = useState([]);
+  const [username, setUsername] = useState(""); // Separate state for username
+  const [isUpdated, setIsUpdated] = useState(false); // Track whether data is updated
   const router = useRouter();
 
   useEffect(() => {
-    // Get verifId from localStorage
-    const verifId = localStorage.getItem("verifID");
-    const verifIdIssue = localStorage.getItem("verifIDIssueDate");
-    // Check if verifId exists
-    if (verifId) {
-      // Retrieve registered users from localStorage
-      const registeredUsers = JSON.parse(localStorage.getItem("RegisteredUsers")) || [];
+    // Function to fetch user data from localStorage
+    const fetchUserData = () => {
+      const verifId = localStorage.getItem("verifID");
+      const verifIdIssue = localStorage.getItem("verifIDIssueDate");
+      if (verifId) {
+        const registeredUsers = JSON.parse(localStorage.getItem("RegisteredUsers")) || [];
+        const currentUser = registeredUsers.find(user => user.verifID === verifId);
 
-      // Find the user with the matching verifId
-      const currentUser = registeredUsers.find(user => user.verifID === verifId);
-      
-      // If user found, set the personal state
-      if (currentUser) {
-        setPersonal({
-          FirstName: `${currentUser.FirstName} `,
-          LastName : `${currentUser.LastName}`, // Combine FirstName and LastName
-          Year: currentUser.year,
-          VerifId: currentUser.verifID,
-          IssueDate: currentUser.verifIDIssueDate,
-          EmailId: currentUser.EmailId,
-          PhoneNumber: currentUser.PhoneNumber,
-          Gender: currentUser.Gender,
-          GovtIDType: currentUser.GovtIDType,
-          GovtIDNumber: currentUser.GovtIDNumber,
-          PermanentAddress: currentUser.PermanentAddress,
-          DateOfBirth: currentUser.DateOfBirth,
-          Password: "***********"
-        });
+        if (currentUser) {
+          const userData = {
+            FirstName: currentUser.FirstName,
+            LastName: currentUser.LastName,
+            Year: currentUser.year,
+            VerifId: currentUser.verifID,
+            IssueDate: currentUser.verifIDIssueDate,
+            EmailId: currentUser.EmailId,
+            PhoneNumber: currentUser.PhoneNumber,
+            Gender: currentUser.Gender,
+            GovtIDType: currentUser.GovtIDType,
+            GovtIDNumber: currentUser.GovtIDNumber,
+            PermanentAddress: currentUser.PermanentAddress,
+            DateOfBirth: currentUser.DateOfBirth,
+            Password: "***********"
+          };
 
-        // Set initial user data for the profile
-        const initialUserData = [
-          {
-            verifId: currentUser.verifID,
-            issueDate: currentUser.verifIDIssueDate,
-            credential: "-",
-            credIssueDate: "-",
-            employer: "-",
-            localID: "-",
-            status: "Create New With Action",
-          },
-        ];
-        setUserData(initialUserData);
+          setPersonal(userData);
+          setUsername(`${currentUser.FirstName} ${currentUser.LastName}`); // Set initial username when data is fetched
+          const initialUserData = [
+            {
+              verifId: currentUser.verifID,
+              issueDate: currentUser.verifIDIssueDate,
+              credential: "-",
+              credIssueDate: "-",
+              employer: "-",
+              localID: "-",
+              status: "Create New With Action",
+            },
+          ];
+          setUserData(initialUserData);
+        }
       }
-    }
-  }, []); // Run only once on component mount
+    };
 
-  const handleBackClick = () => {
-    router.push("/Land"); // Replace with your desired path
+    fetchUserData(); // Fetch user data on initial load
+
+    // Re-fetch user data whenever `isUpdated` is true (after profile update)
+    if (isUpdated) {
+      fetchUserData();
+      setIsUpdated(false); // Reset the update flag after re-fetching
+    }
+  }, [isUpdated]); // Dependency on `isUpdated`
+
+  // Handle field changes and update the `personal` state
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPersonal((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
+  const handleBackClick = () => {
+        router.push("/Land"); // Replace with your desired path
+      };
+
+  const handleUpdateProfile = () => {
+    // Get all registered users from localStorage
+    const registeredUsers = JSON.parse(localStorage.getItem("RegisteredUsers")) || [];
+    const verifId = localStorage.getItem("verifID");
+
+    // Find the user and update their data
+    const updatedUsers = registeredUsers.map(user =>
+      user.verifID === verifId
+        ? {
+            ...user,
+            FirstName: personal.FirstName,
+            LastName: personal.LastName,
+            EmailId: personal.EmailId,
+            PhoneNumber: personal.PhoneNumber,
+            Gender: personal.Gender,
+            GovtIDType: personal.GovtIDType,
+            GovtIDNumber: personal.GovtIDNumber,
+            PermanentAddress: personal.PermanentAddress,
+            DateOfBirth: personal.DateOfBirth,
+          }
+        : user
+    );
+
+    // Save updated users back to localStorage
+    localStorage.setItem("RegisteredUsers", JSON.stringify(updatedUsers));
+
+    // Update the username only after clicking update
+    setUsername(`${personal.FirstName} ${personal.LastName}`);
+
+    // Trigger re-render by setting `isUpdated` to true
+    setIsUpdated(true);
+
+    alert("Profile updated successfully!");
+  };
+   
   const handleCreateCred = async () => {
     const workerDid = personal.VerifId; // Use the current user's verifId
     // Get job details from user input using prompts
@@ -284,7 +339,6 @@ function Profile() {
         console.error("Error revoking credential:", error);
       });
   };
-
   return (
     <div>
       <Navbar />
@@ -294,28 +348,28 @@ function Profile() {
             <img
               src="/Assets/Back.png"
               className="back"
-              onClick={handleBackClick}
+              onClick={() => router.push("/Land")}
             />
             <img src="/Assets/user.png" className="user" />
           </div>
           <div className="PFP_Name">
-            <p>{personal.FirstName + " " + personal.LastName}</p>
+            <p>{username}</p> {/* Display the username which only changes after clicking "Update Profile" */}
             <img src="/Assets/verified.png" className="bluetick" />
           </div>
           <p>{personal.VerifId}</p>
         </div>
+
         <div className="RegFieldContainer">
-          <RegField  data={personal} />
-          <RegFieldR data={personal} />
-          
+          <RegField data={personal} handleChange={handleChange} />
+          <RegFieldR data={personal} handleChange={handleChange} />
         </div>
+
         <div className="RegButtons">
-          <button className="secondary">
+          <button className="secondary" onClick={handleUpdateProfile}>
             <p>Update Profile</p>
           </button>
         </div>
       </div>
-
       {UserData.map((user, index) => (
         <div className="PFP_Block" key={index}>
           <div className="PFPB_Left">
