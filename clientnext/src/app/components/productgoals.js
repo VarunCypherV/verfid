@@ -34,8 +34,8 @@ function ProductGoalsSection() {
         <img
           src={
             isDarkTheme
-              ? "/Assets/Product-mandark.png"
-              : "/Assets/Product-manlight.png"
+              ? "/assets/Product-mandark.png"
+              : "/assets/Product-manlight.png"
           }
         />
         <p>
@@ -52,10 +52,10 @@ function ProductGoalsSection() {
             verifiable identities for freelancers and contract workers.
           </p>
         </div>
-        <img src="/Assets/Product-handshake.png" class="goal-image" />
+        <img src="/assets/Product-handshake.png" class="goal-image" />
       </div>
       <div class="goal-col">
-        <img src="/Assets/Product-globe.png" class="goal-image" />
+        <img src="/assets/Product-globe.png" class="goal-image" />
 
         <div class="goal-card">
           <h3>Empowering Trust and Economic Opportunity</h3>
