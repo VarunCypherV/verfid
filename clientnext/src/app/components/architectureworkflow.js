@@ -13,7 +13,7 @@ function ArchitectureWorkflowSection() {
       </p>
 
       <div className="gif-container">
-        <img src="/Assets/architecture-workflow.gif" />
+        <img src="/assets/architecture-workflow.gif" />
       </div>
     </div>
   );
