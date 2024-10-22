@@ -155,10 +155,10 @@ function Profile() {
 
   const handleVerifyCred = (localID) => {
     // Retrieve issued credentials from localStorage
-    const employerSecrets = ["secret1", "secret2", "secret3"]; // Replace with your actual employer secrets
-    const userSecret = prompt("Enter employer secret:");
-    if (!employerSecrets.includes(userSecret)) {
-      alert("Invalid employer secret. Verification failed.");
+    const employerPublicKey = ["as13423gh42gh412uie127123325", "as13423gh42gh412uie127123324", "as13423gh42gh412uie127123324"]; // Replace with your actual employer secrets
+    const userSecret = prompt("Enter employer publicKey:");
+    if (!employerPublicKey .includes(userSecret)) {
+      alert("Invalid employer PublicKey. Verification failed.");
       return;
     }
 
