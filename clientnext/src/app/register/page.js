@@ -64,7 +64,7 @@ function Register() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="WB_Title">
-            <img src="/Assets/Back.png" />
+            <img src="/assets/Back.png" />
             <h1>Create Your VerifID Account</h1>
           </div>
           <p>Secure your Digital Identity and get Verified today</p>
