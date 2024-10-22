@@ -346,15 +346,15 @@ function Profile() {
         <div className="WB_Head">
           <div className="PFP_Title">
             <img
-              src="/Assets/Back.png"
+              src="/assets/Back.png"
               className="back"
               onClick={() => router.push("/Land")}
             />
-            <img src="/Assets/user.png" className="user" />
+            <img src="/assets/user.png" className="user" />
           </div>
           <div className="PFP_Name">
             <p>{username}</p> {/* Display the username which only changes after clicking "Update Profile" */}
-            <img src="/Assets/verified.png" className="bluetick" />
+            <img src="/assets/verified.png" className="bluetick" />
           </div>
           <p>{personal.VerifId}</p>
         </div>
@@ -408,7 +408,7 @@ function Profile() {
               <DropdownTrigger>
                 <div className="PFPB_Action">
                   <p>Actions</p>
-                  <img src="/Assets/Expand_down.png" />
+                  <img src="/assets/Expand_down.png" />
                 </div>
               </DropdownTrigger>
               <DropdownMenu
