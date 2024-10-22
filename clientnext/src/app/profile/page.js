@@ -35,7 +35,7 @@ function Profile() {
   useEffect(() => {
     // Get verifId from localStorage
     const verifId = localStorage.getItem("verifID");
-    
+    const verifIdIssue = localStorage.getItem("verifIDIssueDate");
     // Check if verifId exists
     if (verifId) {
       // Retrieve registered users from localStorage
@@ -320,10 +320,10 @@ function Profile() {
         <div className="PFP_Block" key={index}>
           <div className="PFPB_Left">
             <p>
-              Verified: <span>{personal.VerifId}</span>
+              VerifID: <span>{personal.VerifId}</span>
             </p>
             <p>
-              Date of Issue: <span>{personal.issueDate || "-"}</span>
+              VerifID Issue: <span>{personal.IssueDate || "-"}</span>
             </p>
             <p>
               Employer: <span>{user.employer || "-"}</span>

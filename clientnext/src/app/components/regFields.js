@@ -13,7 +13,7 @@ function RegField({ handleChange, data }) {
           type="text"
           id="FirstName"
           name="FirstName"
-          placeholder={data.FirstName || "Enter your First Name"}
+          placeholder={data?.FirstName? data.FirstName : "Enter your First Name"}
           className="input-field"
           onChange={handleChange}
         />
@@ -26,7 +26,7 @@ function RegField({ handleChange, data }) {
           type="text"
           id="Gender"
           name="Gender"
-          placeholder={data.Gender || "Enter your gender"}
+          placeholder={data?.Gender?data.Gender : "Enter your gender"}
           className="input-field"
           onChange={handleChange}
         />
@@ -39,7 +39,7 @@ function RegField({ handleChange, data }) {
           type="text"
           id="DateOfBirth"
           name="DateOfBirth"
-          placeholder={data.DateOfBirth || "Enter your Date of Birth"}
+          placeholder={data?.DateOfBirth?data.DateOfBirth : "Enter your Date of Birth"}
           className="input-field"
           onChange={handleChange}
         />
@@ -52,7 +52,7 @@ function RegField({ handleChange, data }) {
           type="text"
           id="PhoneNumber"
           name="PhoneNumber"
-          placeholder={data.PhoneNumber || "Enter your Phone Number"}
+          placeholder={data?.PhoneNumber? data.PhoneNumber: "Enter your Phone Number"}
           className="input-field"
           onChange={handleChange}
         />
@@ -65,7 +65,7 @@ function RegField({ handleChange, data }) {
           type="text"
           id="GovtIDType"
           name="GovtIDType"
-          placeholder={data.GovtIDType || "Enter your Govt ID Type"}
+          placeholder={data?.GovtIDType? data.GovtIDType: "Enter your Govt ID Type"}
           className="input-field"
           onChange={handleChange}
         />

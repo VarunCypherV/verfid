@@ -13,7 +13,7 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="LastName"
           name="LastName"
-          placeholder={data.LastName || "Enter your Last Name"}
+          placeholder={data?.LastName? data.LastName : "Enter your Last Name"}
           className="input-field"
           onChange={handleChange}
         />
@@ -26,7 +26,7 @@ function RegFieldR({ handleChange, data }) {
           type="password"
           id="Password"
           name="Password"
-          placeholder={data.Password || "Enter your Password"}
+          placeholder={data?.Password ? data.Password :"Enter your Password"}
           className="input-field"
           onChange={handleChange}
         />
@@ -39,7 +39,7 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="PermanentAddress"
           name="PermanentAddress"
-          placeholder={data.PermanentAddress || "Enter your Permanent Address"}
+          placeholder={data?.PermanentAddress ? data.PermanentAddress : "Enter your Permanent Address"}
           className="input-field"
           onChange={handleChange}
         />
@@ -52,7 +52,7 @@ function RegFieldR({ handleChange, data }) {
           type="email"
           id="EmailId"
           name="EmailId"
-          placeholder={data.EmailId || "Enter your Email ID"}
+          placeholder={data?.EmailId ? data.EmailId : "Enter your Email ID"}
           className="input-field"
           onChange={handleChange}
         />
@@ -65,7 +65,7 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="GovtIDNumber"
           name="GovtIDNumber"
-          placeholder={data.GovtIDNumber || "Enter your Govt ID Number"}
+          placeholder={data?.GovtIDNumber ? data.GovtIDNumber : "Enter your Govt ID Number"}
           className="input-field"
           onChange={handleChange}
         />
