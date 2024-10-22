@@ -36,19 +36,19 @@ function Navbar() {
       </div>
       <div className="Right">
         <ThemeSwitcher />
-        <Link href="/goals" className="nav-link">
+        <Link href="#goals" className="nav-link">
           Goals
         </Link>
-        <Link href="/workflow" className="nav-link">
+        <Link href="#workflow"  className="nav-link">
           Workflow
         </Link>
-        <Link href="/contact-us" className="nav-link">
+        <Link href="#footer" className="nav-link">
           Contact Us
         </Link>
-        <Link href="/your-identity" className="nav-link">
-          Your Identity
+        <Link href="/Login" className="nav-link">
+          Login
         </Link>
-        <Link href="/profile" className="ProfileImg">
+        <Link href="/Profile" className="ProfileImg">
           <img
           src={isDarkTheme ? "/Assets/darkprofile.png" : "/Assets/lightprofile.png"}
         />

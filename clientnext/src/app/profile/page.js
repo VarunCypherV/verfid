@@ -1,4 +1,5 @@
-import React, { useState } from "react"; // Import useState
+"use client";
+import React, { useState, useEffect } from "react"; // Import useEffect
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import RegField from "../components/regFields";
@@ -8,35 +9,82 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import RegFieldR from "../components/regFieldsR";
 
-// User data stored in JSON format
-const personal = {
-  name: "Rajesh Kumar",
-  year: "2021 BCSE 1000",
-  verifId: localStorage.getItem("verifId"),
-  issueDate: localStorage.getItem("verifIdIssueDate"),
+// Initialize personal state
+const initialPersonal = {
+  name: "Loading...", // Temporary loading state
+  year: "",
+  verifId: "",
+  issueDate: "",
+  email: "",
+  phoneNumber: "",
+  gender: "",
+  govtIDType: "",
+  govtIDNumber: "",
+  permanentAddress: "",
+  dateOfBirth: "",
 };
 
-// localStorage.setItem("verifId", "12344321");
-// localStorage.setItem("verifIdIssueDate", "13/10/2004");
-
-const initialUserData = [
-  {
-    verifId: personal.verifId || "Please Register",
-    issueDate: personal.issueDate || "-",
-    credential: "-",
-    credIssueDate: "-",
-    employer: "-",
-    localID: "-",
-    status: "Create New With Action",
-  },
-];
-console.log(personal.verifId, personal.issueDate);
 function Profile() {
-  const [UserData, setUserData] = useState(initialUserData); // Use state for UserData
+  const [UserData, setUserData] = useState([]); // Use state for UserData
+  const [personal, setPersonal] = useState(initialPersonal); // Use state for personal data
+  const router = useRouter();
+
+  useEffect(() => {
+    // Get verifId from localStorage
+    const verifId = localStorage.getItem("verifID");
+    
+    // Check if verifId exists
+    if (verifId) {
+      // Retrieve registered users from localStorage
+      const registeredUsers = JSON.parse(localStorage.getItem("RegisteredUsers")) || [];
+
+      // Find the user with the matching verifId
+      const currentUser = registeredUsers.find(user => user.verifID === verifId);
+      
+      // If user found, set the personal state
+      if (currentUser) {
+        setPersonal({
+          FirstName: `${currentUser.FirstName} `,
+          LastName : `${currentUser.LastName}`, // Combine FirstName and LastName
+          Year: currentUser.year,
+          VerifId: currentUser.verifID,
+          IssueDate: currentUser.verifIDIssueDate,
+          EmailId: currentUser.EmailId,
+          PhoneNumber: currentUser.PhoneNumber,
+          Gender: currentUser.Gender,
+          GovtIDType: currentUser.GovtIDType,
+          GovtIDNumber: currentUser.GovtIDNumber,
+          PermanentAddress: currentUser.PermanentAddress,
+          DateOfBirth: currentUser.DateOfBirth,
+          Password: "***********"
+        });
+
+        // Set initial user data for the profile
+        const initialUserData = [
+          {
+            verifId: currentUser.verifID,
+            issueDate: currentUser.verifIDIssueDate,
+            credential: "-",
+            credIssueDate: "-",
+            employer: "-",
+            localID: "-",
+            status: "Create New With Action",
+          },
+        ];
+        setUserData(initialUserData);
+      }
+    }
+  }, []); // Run only once on component mount
+
+  const handleBackClick = () => {
+    router.push("/Land"); // Replace with your desired path
+  };
 
   const handleCreateCred = async () => {
-    const workerDid = personal.verifId; // You can replace this with actual DID
+    const workerDid = personal.VerifId; // Use the current user's verifId
     // Get job details from user input using prompts
     const jobTitle = prompt("Enter Job Title:");
     const completionDate = prompt("Enter Completion Date (YYYY-MM-DD):");
@@ -51,16 +99,13 @@ function Profile() {
 
     try {
       // Hit the issue-credential API
-      const issueResponse = await fetch(
-        "http://localhost:3001/issue-credential",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ workerDid, jobDetails }),
-        }
-      );
+      const issueResponse = await fetch("http://localhost:3001/issue-credential", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ workerDid, jobDetails }),
+      });
 
       const issueData = await issueResponse.json();
       const { credential } = issueData;
@@ -69,13 +114,9 @@ function Profile() {
       const localId = Math.floor(10000 + Math.random() * 90000).toString();
 
       // Store the issued credential in local storage as an array of objects
-      let issuedCredentials =
-        JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+      let issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
       issuedCredentials.push({ localId, credential });
-      localStorage.setItem(
-        "issuedCredentials",
-        JSON.stringify(issuedCredentials)
-      );
+      localStorage.setItem("issuedCredentials", JSON.stringify(issuedCredentials));
 
       // Add the new credential to the top of the UserData array
       const newUser = {
@@ -98,26 +139,32 @@ function Profile() {
       alert("Successfully Check Immediately Below");
 
       // Hit the store-credential API
-      const storeResponse = await fetch(
-        "http://localhost:3001/store-credential",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ credential }),
-        }
-      );
+      const storeResponse = await fetch("http://localhost:3001/store-credential", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ credential }),
+      });
 
       const storeData = await storeResponse.json();
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   const handleVerifyCred = (localID) => {
     // Retrieve issued credentials from localStorage
-    const issuedCredentials =
-      JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+    const employerSecrets = ["secret1", "secret2", "secret3"]; // Replace with your actual employer secrets
+    const userSecret = prompt("Enter employer secret:");
+    if (!employerSecrets.includes(userSecret)) {
+      alert("Invalid employer secret. Verification failed.");
+      return;
+    }
+
+    
+    
+    const issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
 
     // Filter the credentials by localID
     const credentialsToVerify = issuedCredentials
@@ -153,12 +200,8 @@ function Profile() {
             newData[index] = { ...newData[index], status: "VERIFIED" }; // Update status
 
             // Move verified credentials down
-            const verified = newData.filter(
-              (user) => user.status === "VERIFIED"
-            );
-            const unverified = newData.filter(
-              (user) => user.status !== "VERIFIED"
-            );
+            const verified = newData.filter((user) => user.status === "VERIFIED");
+            const unverified = newData.filter((user) => user.status !== "VERIFIED");
 
             // Return the reordered array
             return [...unverified, ...verified];
@@ -195,11 +238,9 @@ function Profile() {
 
   const handleRevoke = (localID) => {
     // Retrieve issued credentials from localStorage
-    const issuedCredentials =
-      JSON.parse(localStorage.getItem("issuedCredentials")) || [];
+    const issuedCredentials = JSON.parse(localStorage.getItem("issuedCredentials")) || [];
 
     // Find the credential associated with the localID
-
     const credentialToRevoke = issuedCredentials.find(
       (item) => item.localId === localID
     );
@@ -250,18 +291,23 @@ function Profile() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="PFP_Title">
-            <img src="/Assets/Back.png" className="back" />
+            <img
+              src="/Assets/Back.png"
+              className="back"
+              onClick={handleBackClick}
+            />
             <img src="/Assets/user.png" className="user" />
           </div>
           <div className="PFP_Name">
-            <p>{personal.name}</p>
+            <p>{personal.FirstName + " " + personal.LastName}</p>
             <img src="/Assets/verified.png" className="bluetick" />
           </div>
-          <p>{personal.year}</p>
+          <p>{personal.VerifId}</p>
         </div>
         <div className="RegFieldContainer">
-          <RegField />
-          <RegField />
+          <RegField  data={personal} />
+          <RegFieldR data={personal} />
+          
         </div>
         <div className="RegButtons">
           <button className="secondary">
@@ -274,7 +320,7 @@ function Profile() {
         <div className="PFP_Block" key={index}>
           <div className="PFPB_Left">
             <p>
-              Verified: <span>{personal.verifId}</span>
+              Verified: <span>{personal.VerifId}</span>
             </p>
             <p>
               Date of Issue: <span>{personal.issueDate || "-"}</span>
@@ -283,7 +329,7 @@ function Profile() {
               Employer: <span>{user.employer || "-"}</span>
             </p>
             <p>
-              jobTitle: <span>{user.jobTitle || "-"}</span>
+              Job Title: <span>{user.jobTitle || "-"}</span>
             </p>
           </div>
           <div className="PFPB_Right">
@@ -316,7 +362,7 @@ function Profile() {
                 aria-label="Static Actions"
                 onAction={(key) => handleAction(key, user.localID)} // Pass localID to action handler
                 disabledKeys={
-                  !personal.verifId
+                  !personal.VerifId
                     ? ["verify", "create"]
                     : user.status === "Create New With Action"
                     ? ["verify"]

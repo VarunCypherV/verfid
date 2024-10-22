@@ -11,11 +11,11 @@ function Land() {
   return (
     <div>
       <Navbar />
-      <HeroSection />
-      <ProductGoalsSection />
-      <AboutUsSection />
-      <ArchitectureWorkflowSection/>
-      <Footer />
+      <HeroSection id="hero"/>
+      <ProductGoalsSection id ="goals"/>
+      <AboutUsSection id="about"/>
+      <ArchitectureWorkflowSection id="workflow"/>
+      <Footer id="contact-us" />
     </div>
   );
 }
