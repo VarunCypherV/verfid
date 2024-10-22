@@ -30,7 +30,7 @@ function Footer() {
     <div className="Footer">
       <div className="F_Left">
         <img
-          src={isDarkTheme ? "/Assets/darklogo.png" : "/Assets/lightlogo.png"}
+          src={isDarkTheme ? "/assets/darklogo.png" : "/assets/lightlogo.png"}
         />
         <p>VerifID Headquarters</p>
         <p>#27, Taramani Road,</p>
