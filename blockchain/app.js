@@ -31,6 +31,9 @@ app.use(bodyParser.json());
  * Route to create a DID for a worker (e.g., Alice)
  * GET /create-did
  */
+app.get("/",(req , res ) => {
+  res.json("This is Blockchain")
+});
 app.get('/create-did', (req, res) => {
   const did = createMockDID();
   res.json({ did });
