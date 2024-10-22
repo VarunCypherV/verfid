@@ -13,9 +13,8 @@ function HeroSection() {
         </h1>
         <div className="HeroText">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor <br />
-            incididunt ut labore et dolore magna aliqua.
+            We provide two-way trust between gig workers and employers.<br />
+            To help enable a more secure future.
           </p>
         </div>
         <div className="HeroButtons">
