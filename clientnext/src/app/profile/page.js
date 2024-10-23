@@ -33,7 +33,7 @@ const initialPersonal = {
 function Profile() {
   const [personal, setPersonal] = useState(initialPersonal); // Use state for personal data
   const [UserData, setUserData] = useState([]);
-  const [username, setUsername] = useState(""); // Separate state for username
+  const [username, setUsername] = useState("Please Login"); // Separate state for username
   const [isUpdated, setIsUpdated] = useState(false); // Track whether data is updated
   const router = useRouter();
 
