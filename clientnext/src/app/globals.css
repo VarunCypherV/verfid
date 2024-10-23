@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  scroll-behavior: smooth;
+}
 :root {
   --text: #011c4b;
   --text75: #3c5175;
@@ -647,6 +650,12 @@ label {
   left: 10px;
   height: 45px;
   width: 45px;
+}
+.back:hover{
+  cursor: pointer;
+}
+.back1:hover{
+  cursor: pointer;
 }
 
 .user {

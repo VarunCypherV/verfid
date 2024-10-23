@@ -4,6 +4,18 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import ThemeSwitcher from "../components/themeswitcher";
 
+const smoothScrollTo = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  } else {
+    window.location.href = "/#" + id;
+  }
+};
+
 function Navbar() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -32,26 +44,54 @@ function Navbar() {
       <div className="Left">
         <img
           src={isDarkTheme ? "/assets/darklogo.png" : "/assets/lightlogo.png"}
+          onClick={() => {
+            window.location.href = "/";
+          }}
         />
       </div>
       <div className="Right">
         <ThemeSwitcher />
-        <Link href="#goals" className="nav-link">
+        <a
+          href="#goals"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("goals");
+          }}
+        >
           Goals
-        </Link>
-        <Link href="#workflow"  className="nav-link">
+        </a>
+        <a
+          href="#workflow"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("workflow");
+          }}
+        >
           Workflow
-        </Link>
-        <Link href="#footer" className="nav-link">
+        </a>
+        <a
+          href="#contact-us"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("contact-us");
+          }}
+        >
           Contact Us
-        </Link>
+        </a>
         <Link href="/login" className="nav-link">
           Login
         </Link>
         <Link href="/profile" className="ProfileImg">
           <img
-          src={isDarkTheme ? "/assets/darkprofile.png" : "/assets/lightprofile.png"}
-        />
+            src={
+              isDarkTheme
+                ? "/assets/darkprofile.png"
+                : "/assets/lightprofile.png"
+            }
+          />
         </Link>
       </div>
     </div>

@@ -353,7 +353,8 @@ function Profile() {
             <img src="/assets/User.png" className="user" />
           </div>
           <div className="PFP_Name">
-            <p>{username}</p> {/* Display the username which only changes after clicking "Update Profile" */}
+            <p>{username}</p>{" "}
+            {/* Display the username which only changes after clicking "Update Profile" */}
             <img src="/assets/Verified.png" className="bluetick" />
           </div>
           <p>{personal.VerifId}</p>
@@ -443,7 +444,7 @@ function Profile() {
           </div>
         </div>
       ))}
-      <Footer />
+      <Footer id="contact-us" />
     </div>
   );
 }

@@ -66,7 +66,11 @@ function Register() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="WB_Title">
-            <img src="/assets/Back.png" onClick={handleBackClick} />
+            <img
+              src="/assets/Back.png"
+              onClick={handleBackClick}
+              className="back1"
+            />
             <h1>Create Your VerifID Account</h1>
           </div>
           <p>Secure your Digital Identity and get Verified today</p>
@@ -84,7 +88,7 @@ function Register() {
           </button>
         </div>
       </div>
-      <Footer />
+      <Footer id="contact-us" />
     </div>
   );
 }
