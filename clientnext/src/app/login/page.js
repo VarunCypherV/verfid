@@ -15,7 +15,9 @@ function Login() {
   const handleRegClick = () => {
     router.push("/register"); // Navigate to the registration page
   };
-
+ const handleBackClick = () => {
+        router.push("/Land"); // Replace with your desired path
+      };
   const handleLogin = () => {
     // Retrieve registered users from localStorage
     const registeredUsers = JSON.parse(localStorage.getItem("RegisteredUsers")) || [];
@@ -42,7 +44,7 @@ function Login() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="WB_Title">
-            <img src="/assets/Back.png" alt="Back" />
+            <img src="/assets/Back.png" alt="Back" onClick={handleBackClick} />
             <h1>Welcome Back to VerifID</h1>
           </div>
           <p>Log in to stay connected and secure with VerifID</p>
