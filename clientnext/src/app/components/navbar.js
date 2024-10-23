@@ -45,10 +45,10 @@ function Navbar() {
         <Link href="#footer" className="nav-link">
           Contact Us
         </Link>
-        <Link href="/Login" className="nav-link">
+        <Link href="/login" className="nav-link">
           Login
         </Link>
-        <Link href="/Profile" className="ProfileImg">
+        <Link href="/profile" className="ProfileImg">
           <img
           src={isDarkTheme ? "/assets/darkprofile.png" : "/assets/lightprofile.png"}
         />
