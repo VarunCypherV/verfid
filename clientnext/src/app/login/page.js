@@ -13,7 +13,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleRegClick = () => {
-    router.push("/Register"); // Navigate to the registration page
+    router.push("/register"); // Navigate to the registration page
   };
 
   const handleLogin = () => {
@@ -29,7 +29,7 @@ function Login() {
       localStorage.setItem("verifIDIssueDate", user.verifIDIssueDate);
       
       // Redirect to the profile page (replace with the actual path)
-      router.push("/Profile");
+      router.push("/profile");
     } else {
       // Optionally, handle the case where no matching user is found
       alert("Invalid VerifID or password. Please try again.");
