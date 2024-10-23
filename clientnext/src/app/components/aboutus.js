@@ -15,7 +15,7 @@ function AboutUsSection() {
           <p>Store and share tamper-proof credentials with ease</p>
         </div>
         <div className="card small">
-          <img src="/Assets/card-image.png" />
+          <img src="/assets/card-image.png" />
         </div>
         <div className="card medium blue-lighter">
           <h3>KEEP DOCUMENTS SAFE WITH ADVANCED ENCRYPTION.</h3>
