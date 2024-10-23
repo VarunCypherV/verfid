@@ -27,7 +27,7 @@ function Register() {
   });
 
   const handleLogClick = () => {
-    router.push("/Login");
+    router.push("/login");
   };
 
   const handleChange = (e) => {
@@ -55,7 +55,7 @@ function Register() {
     localStorage.setItem("RegisteredUsers", JSON.stringify(registeredUsers));
 
     alert("Registration successful! Verif ID :" + newUser.verifID);
-    router.push("/Login");
+    router.push("/login");
   };
 
   return (
