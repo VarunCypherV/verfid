@@ -9,7 +9,9 @@ import { useRouter } from "next/navigation";
 
 function Register() {
   const router = useRouter();
-
+  const handleBackClick = () => {
+        router.push("/Land"); // Replace with your desired path
+  };
   // State to hold the form data
   const [formData, setFormData] = useState({
     FirstName: "",
@@ -64,7 +66,7 @@ function Register() {
       <div className="WBox">
         <div className="WB_Head">
           <div className="WB_Title">
-            <img src="/assets/Back.png" />
+            <img src="/assets/Back.png" onClick={handleBackClick} />
             <h1>Create Your VerifID Account</h1>
           </div>
           <p>Secure your Digital Identity and get Verified today</p>
