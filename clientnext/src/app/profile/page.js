@@ -16,18 +16,18 @@ import {
 
 // Initialize personal state
 const initialPersonal = {
-  FirstName: "Loading...",
-  LastName: "",
-  year: "",
-  verifId: "",
-  issueDate: "",
-  email: "",
-  phoneNumber: "",
-  gender: "",
-  govtIDType: "",
-  govtIDNumber: "",
-  permanentAddress: "",
-  dateOfBirth: "",
+  FirstName: "Please Login",
+  LastName: "Please Login",
+  year: "Please Login",
+  verifId: "Please Login",
+  issueDate: "Please Login",
+  email: "Please Login",
+  phoneNumber: "Please Login",
+  gender: "Please Login",
+  govtIDType: "Please Login",
+  govtIDNumber: "Please Login",
+  permanentAddress: "Please Login",
+  dateOfBirth: "Please Login",
 };
 
 function Profile() {
@@ -350,11 +350,11 @@ function Profile() {
               className="back"
               onClick={() => router.push("/Land")}
             />
-            <img src="/assets/user.png" className="user" />
+            <img src="/assets/User.png" className="user" />
           </div>
           <div className="PFP_Name">
             <p>{username}</p> {/* Display the username which only changes after clicking "Update Profile" */}
-            <img src="/assets/verified.png" className="bluetick" />
+            <img src="/assets/Verified.png" className="bluetick" />
           </div>
           <p>{personal.VerifId}</p>
         </div>
