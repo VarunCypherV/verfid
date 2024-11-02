@@ -36,7 +36,12 @@ function Profile() {
   const [username, setUsername] = useState("Please Login"); // Separate state for username
   const [isUpdated, setIsUpdated] = useState(false); // Track whether data is updated
   const router = useRouter();
+const [isDisabled, setIsDisabled] = useState(false);
 
+  useEffect(() => {
+    setIsDisabled(!localStorage.getItem("verifID"));
+  }, []);
+  
   useEffect(() => {
     // Function to fetch user data from localStorage
     const fetchUserData = () => {
@@ -354,7 +359,6 @@ function Profile() {
           </div>
           <div className="PFP_Name">
             <p>{username}</p>{" "}
-            {/* Display the username which only changes after clicking "Update Profile" */}
             <img src="/assets/Verified.png" className="bluetick" />
           </div>
           <p>{personal.VerifId}</p>
@@ -365,7 +369,7 @@ function Profile() {
           <RegFieldR data={personal} handleChange={handleChange} />
         </div>
 
-        <div className="RegButtons">
+        <div className={`RegButtons ${isDisabled ? "disabled" : ""}`}>
           <button className="secondary" onClick={handleUpdateProfile}>
             <p>Update Profile</p>
           </button>

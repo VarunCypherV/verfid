@@ -18,6 +18,7 @@ const smoothScrollTo = (id) => {
 
 function Navbar() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -38,6 +39,8 @@ function Navbar() {
     });
     return () => observer.disconnect(); // Cleanup observer when the component unmounts
   }, []);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <div className="Nav">
@@ -94,6 +97,58 @@ function Navbar() {
           />
         </Link>
       </div>
+      
+      <div className="Hamburger" onClick={toggleMenu}>
+        ☰
+      </div>
+      
+      {isMenuOpen && (
+        <div className="MobileMenu" onClick={() => setIsMenuOpen(false)}>
+        <ThemeSwitcher />
+        <a
+          href="#goals"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("goals");
+          }}
+        >
+          Goals
+        </a>
+        <a
+          href="#workflow"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("workflow");
+          }}
+        >
+          Workflow
+        </a>
+        <a
+          href="#contact-us"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            smoothScrollTo("contact-us");
+          }}
+        >
+          Contact Us
+        </a>
+        <Link href="/login" className="nav-link">
+          Login
+        </Link>
+        <Link href="/profile" className="ProfileImg">
+          <img
+            src={
+              isDarkTheme
+                ? "/assets/darkprofile.png"
+                : "/assets/lightprofile.png"
+            }
+          />
+        </Link>
+        </div>
+      )}
     </div>
   );
 }

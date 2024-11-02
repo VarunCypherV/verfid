@@ -1,10 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function RegFieldR({ handleChange, data }) {
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  useEffect(() => {
+    setIsDisabled(!localStorage.getItem("verifID"));
+  }, []);
+
   return (
-    <div className="RF">
+    <div className={`RF ${isDisabled ? "disabled" : ""}`}>
       <div className="form-group">
         <label htmlFor="LastName">
           Last Name <span className="required">*</span>
@@ -13,9 +19,10 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="LastName"
           name="LastName"
-          placeholder={data?.LastName? data.LastName : "Enter your Last Name"}
+          placeholder={data?.LastName || "Enter your Last Name"}
           className="input-field"
           onChange={handleChange}
+          disabled={isDisabled}
         />
       </div>
       <div className="form-group">
@@ -26,9 +33,10 @@ function RegFieldR({ handleChange, data }) {
           type="password"
           id="Password"
           name="Password"
-          placeholder={data?.Password ? data.Password :"Enter your Password"}
+          placeholder={data?.Password || "Enter your Password"}
           className="input-field"
           onChange={handleChange}
+          disabled={isDisabled}
         />
       </div>
       <div className="form-group">
@@ -39,9 +47,10 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="PermanentAddress"
           name="PermanentAddress"
-          placeholder={data?.PermanentAddress ? data.PermanentAddress : "Enter your Permanent Address"}
+          placeholder={data?.PermanentAddress || "Enter your Permanent Address"}
           className="input-field"
           onChange={handleChange}
+          disabled={isDisabled}
         />
       </div>
       <div className="form-group">
@@ -52,9 +61,10 @@ function RegFieldR({ handleChange, data }) {
           type="email"
           id="EmailId"
           name="EmailId"
-          placeholder={data?.EmailId ? data.EmailId : "Enter your Email ID"}
+          placeholder={data?.EmailId || "Enter your Email ID"}
           className="input-field"
           onChange={handleChange}
+          disabled={isDisabled}
         />
       </div>
       <div className="form-group">
@@ -65,9 +75,10 @@ function RegFieldR({ handleChange, data }) {
           type="text"
           id="GovtIDNumber"
           name="GovtIDNumber"
-          placeholder={data?.GovtIDNumber ? data.GovtIDNumber : "Enter your Govt ID Number"}
+          placeholder={data?.GovtIDNumber || "Enter your Govt ID Number"}
           className="input-field"
           onChange={handleChange}
+          disabled={isDisabled}
         />
       </div>
     </div>

@@ -101,6 +101,7 @@ p {
 
 .Nav {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   flex: 1;
   background-color: var(--background);
@@ -126,8 +127,7 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  flex: 2;
-  margin-right: 500px;
+  flex: 3;
   > img {
     height: 30px;
     width: 88px;
@@ -158,6 +158,64 @@ p {
   }
 }
 
+.Hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  align-self: right;
+}
+
+.MobileMenu {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: var(--background);
+  padding: 20px; /* Increased padding around the menu */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.MobileMenu a {
+  margin-bottom: 15px; /* Adds more space between each link */
+  font-size: 18px; /* Adjust font size if needed */
+  text-decoration: none;
+  color: var(--text);
+}
+
+.MobileMenu a:last-child {
+  margin-bottom: 0; /* Removes margin from the last item */
+}
+
+@media (max-width: 1300px) {
+  .Right {
+    display: none;
+  }
+  .Left {
+    flex:5
+  }
+  .Hamburger {
+    display: block;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 700px) {
+  .Right {
+    display: none;
+  }
+  .Left {
+    flex:5;
+  }
+  .Hamburger {
+    display: block;
+    padding: 25px;
+    flex:1
+  }
+}
+
+
+
 /* ================================================= */
 /* Footer */
 
@@ -167,7 +225,7 @@ p {
   justify-content: center;
   margin: 60px;
   padding: 60px;
-  height: 300px;
+  /* height: 300px; */
   background-color: var(--background);
   flex: 1;
 }
@@ -182,6 +240,7 @@ p {
     width: 88.32px;
   }
 }
+
 .top {
   margin: 24px 0;
 }
@@ -204,6 +263,36 @@ p {
   display: flex;
   align-self: flex-start;
 }
+
+@media (max-width: 1300px) {
+  .Footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--background);
+    flex-wrap: wrap;
+
+  }
+
+  .F_Left, .F_Middle, .F_Right {
+    margin: 20px; /* Add space between sections */
+  }
+
+  /* Reduce font sizes */
+  .F_Left p,
+  .F_Middle p,
+  .F_Right p,
+  .F_Right h3 {
+    font-size: 14px; /* Adjust this value as needed */
+  }
+
+  .F_Left h3,
+  .F_Middle h3,
+  .F_Right h3 {
+    font-size: 16px; /* Adjust the heading size */
+  }
+}
+
 
 /* ===================================================== */
 
@@ -238,7 +327,7 @@ p {
 }
 
 .subscribe-button {
-  padding: 8px 16px;
+  padding: 8px 26px;
   background-color: var(--text);
   color: var(--background);
   border: none;
@@ -248,6 +337,33 @@ p {
 
 .subscribe-button:hover {
   background-color: var(--hover-color);
+}
+
+@media (max-width: 1300px) {
+  .email-input {
+    
+  }
+  ::placeholder {
+    color: var(--text50);
+    font-size: 12px;
+  }
+  .subscribe-button {
+    font-size: 14px; /* Reduced font size */
+  }
+}
+
+@media (max-width: 900px) {
+  .email-input {
+    padding:2px;
+  }
+  ::placeholder {
+    color: var(--text50);
+    font-size: 8px;
+  }
+  .subscribe-button {
+    font-size: 8px; /* Reduced font size */
+    padding:5px 10px;
+  }
 }
 
 /* ===================================================== */
@@ -306,8 +422,7 @@ p {
 }
 
 button {
-  width: 185px;
-  height: 47px; /* Add padding to buttons */
+  padding: 5px 20px;
   border: none; /* Remove default border */
   border-radius: 8px; /* Rounded corners */
   cursor: pointer; /* Change cursor on hover */
@@ -402,6 +517,54 @@ button {
   gap:20px;
 }
 
+@media (max-width: 1300px) {
+  .goal-card h1,
+  .goal-card h3,
+  .goal-card p {
+    font-size: 90%; /* Reduce font size */
+  }
+  .goal-card img {
+    width: 120%; 
+  }
+}
+
+@media (max-width: 1000px) {
+  
+  .product-goals-section {
+    flex-wrap: wrap; /* Enable wrapping */
+  }
+  .goal-card {
+    flex: 1 1 100%; /* Make cards full width on small screens */
+  }
+  .goal-card h1,
+  .goal-card h3,
+  .goal-card p {
+    font-size: 80%; /* Reduce font size */
+  }
+  .goal-card img {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  
+  .product-goals-section {
+    flex-wrap: wrap; /* Enable wrapping */
+  }
+  .goal-card {
+    flex: 1 1 80%; /* Make cards full width on small screens */
+  }
+  .goal-card h1,
+  .goal-card h3,
+  .goal-card p {
+    font-size: 80%; /* Reduce font size */
+  }
+  .goal-card img {
+    display: none;
+  }
+  .goal-col img{
+    display: none;
+  }
+}
 /* ===================================================== */
 
 .about-us-section {
@@ -486,6 +649,58 @@ button {
   grid-column: span 2;
   grid-row: span 1;
 }
+
+@media (max-width: 1000px) {
+  .about-us-section h1 {
+    font-size: 40px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .card h3 {
+    font-size: 12px;
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "large large"
+      "blue-light small"
+      "medium medium"
+      "green small";
+  }
+
+  .card.large {
+    grid-column: span 12;
+    grid-row: span 1;
+  }
+  .card.medium {
+    grid-column: span 6;
+    grid-row: span 1;
+  }
+  .card.small {
+    grid-column: span 6;
+    grid-row: span 1;
+    >img {
+      width:50%;
+    }
+  }
+
+
+}
+
+
 /* ===================================================== */
 .architecture-workflow-section {
   display: flex;
@@ -599,8 +814,15 @@ label {
   margin: 0px 5%;
 }
 
+
+.RF.disabled {
+  filter: blur(4px);
+  pointer-events: none; /* Prevent clicks */
+  opacity: 0.5;
+}
+
 .input-field:focus {
-  border-color: #5a82ab; /* Focus border color */
+  border-color: #5a82ab;
 }
 
 .RegFieldContainer {
@@ -613,13 +835,28 @@ label {
 }
 
 .RegButtons {
+  display: flex;
   flex-direction: row;
-  justify-content: center;
-  gap: 25%;
-  width: 30%;
-  margin: 46px 0px;
+  justify-content: space-between; /* Push buttons to either end */
+  align-items: center; /* Align buttons vertically */
+  width: 30%; /* Make sure the container spans the full width */
+  margin-top: 10px;
 }
 
+.RegButtons button {
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+
+.RegButtons.disabled {
+  filter: blur(4px);
+  pointer-events: none;
+  opacity: 0.5;
+}
 /* =================== */
 .PFP_Title {
   align-items: center;

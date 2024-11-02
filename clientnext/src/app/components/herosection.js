@@ -2,6 +2,18 @@
 
 import React from "react";
 const HeroSection = ({ id }) => {
+  const smoothScrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    } else {
+      window.location.href = "/#" + id;
+    }
+  };
+
   return (
     <section id={id}>
       <div className="HeroSection">
@@ -20,7 +32,13 @@ const HeroSection = ({ id }) => {
             </p>
           </div>
           <div className="HeroButtons">
-            <button className="primary">
+            <button
+              className="primary"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("about");
+              }}
+            >
               <p>About Us</p>
             </button>
             <button
