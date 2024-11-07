@@ -388,6 +388,25 @@ p {
   object-fit: contain;
 }
 
+@media (max-width: 850px) {
+  .HeroImage {
+    display: none;
+  }
+  .HeroSection {
+    padding: 50px;
+  }
+  .HeroHeader {
+    flex:1;
+  }
+  .TrustTextPrimary{
+    font-size: 80%;
+  }
+  .HeroHeader h1 {
+    font-size: 200%;
+  }
+}
+
+
 .HeroHeader {
   text-align: left; /* Center text horizontally */
   margin: 20px 0;
