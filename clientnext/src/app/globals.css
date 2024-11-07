@@ -785,6 +785,15 @@ button {
   }
 }
 
+@media (max-width: 700px) {
+  .architecture-workflow-section {
+    padding:50px;
+  }
+  .gif-container {
+    padding:0px;
+  }
+}
+
 .description {
   max-width: 800px;
   font-size: 18px;
