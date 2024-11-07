@@ -915,10 +915,11 @@ label {
 .RegButtons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* Push buttons to either end */
   align-items: center; /* Align buttons vertically */
   width: 30%; /* Make sure the container spans the full width */
   margin-top: 10px;
+  gap: 30px;
+  justify-content: center;
 }
 
 .RegButtons button {
