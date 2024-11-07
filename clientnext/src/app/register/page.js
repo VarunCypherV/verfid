@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import RegField from "../components/regFields";
-import RegFieldR from "../components/regFieldsR";
+import RegisterField from "../components/registerFields";
+import RegisterFieldR from "../components/registerFieldsR";
 import { useRouter } from "next/navigation";
 
 function Register() {
@@ -76,8 +76,8 @@ function Register() {
           <p>Secure your Digital Identity and get Verified today</p>
         </div>
         <div className="RegFieldContainer">
-          <RegField handleChange={handleChange} />
-          <RegFieldR handleChange={handleChange} />
+          <RegisterField handleChange={handleChange} />
+          <RegisterFieldR handleChange={handleChange} />
         </div>
         <div className="RegButtons">
           <button className="secondary" onClick={handleRegister}>
