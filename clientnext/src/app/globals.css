@@ -1012,3 +1012,127 @@ label {
   padding: 10px 50px;
   border-radius: 8px;
 }
+
+/* profile responsive code */
+
+/* Adjust for tablets (screens 768px and up) */
+@media (max-width: 1024px) {
+  .WBox {
+    padding: 40px;
+    margin: 30px;
+  }
+  
+  .WB_Head {
+    margin-bottom: 40px;
+  }
+  
+  .RegFieldContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .RegButtons {
+    width: 70%; /* Make the buttons take up more space */
+  }
+  
+  .PFP_Name p {
+    font-size: 30px;
+  }
+  
+  .user {
+    height: 200px;
+    width: 200px;
+  }
+}
+
+/* Adjust for smaller mobile screens (screens 480px and up) */
+@media (max-width: 768px) {
+  .WBox {
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .WB_Title h1 {
+    font-size: 30px;
+  }
+  
+  .RegFieldContainer {
+    width: 100%;
+  }
+
+  .RegButtons {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .RegButtons button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .PFP_Name p {
+    font-size: 25px;
+  }
+  
+  .user {
+    height: 150px;
+    width: 150px;
+  }
+  
+  .PFP_Block {
+    padding: 30px 20px;
+  }
+
+  .PFPB_Left, .PFPB_Right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Adjust for extra small mobile screens (screens less than 480px) */
+@media (max-width: 480px) {
+  .WBox {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .WB_Head {
+    margin-bottom: 20px;
+  }
+
+  .PFP_Title img.back {
+    height: 30px;
+    width: 30px;
+  }
+
+  .PFP_Name p {
+    font-size: 20px;
+  }
+
+  .bluetick, .user {
+    height: 30px;
+    width: 30px;
+  }
+
+  .RegFieldContainer {
+    padding: 0 10px;
+  }
+
+  .RegButtons button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
