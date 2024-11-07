@@ -52,7 +52,7 @@ function Navbar() {
           }}
         />
       </div>
-      <div className="Right">
+      <div className={`Right ${isMenuOpen ? "open" : ""}`}>
         <ThemeSwitcher />
         <a
           href="#goals"
@@ -97,56 +97,59 @@ function Navbar() {
           />
         </Link>
       </div>
-      
+
       <div className="Hamburger" onClick={toggleMenu}>
         ☰
       </div>
-      
+
       {isMenuOpen && (
-        <div className="MobileMenu" onClick={() => setIsMenuOpen(false)}>
-        <ThemeSwitcher />
-        <a
-          href="#goals"
-          className="nav-link"
-          onClick={(e) => {
-            e.preventDefault();
-            smoothScrollTo("goals");
-          }}
-        >
-          Goals
-        </a>
-        <a
-          href="#workflow"
-          className="nav-link"
-          onClick={(e) => {
-            e.preventDefault();
-            smoothScrollTo("workflow");
-          }}
-        >
-          Workflow
-        </a>
-        <a
-          href="#contact-us"
-          className="nav-link"
-          onClick={(e) => {
-            e.preventDefault();
-            smoothScrollTo("contact-us");
-          }}
-        >
-          Contact Us
-        </a>
-        <Link href="/login" className="nav-link">
-          Login
-        </Link>
-        <Link href="/profile" className="ProfileImg">
-          <img
-            src={
-              isDarkTheme
-                ? "/assets/darkprofile.png"
-                : "/assets/lightprofile.png"
-            }
-          />
-        </Link>
+        <div className="MobileMenu">
+          <ThemeSwitcher />
+          <a
+            href="#goals"
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              smoothScrollTo("goals");
+            }}
+          >
+            Goals
+          </a>
+          <a
+            href="#workflow"
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              smoothScrollTo("workflow");
+            }}
+          >
+            Workflow
+          </a>
+          <a
+            href="#contact-us"
+            className="nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              smoothScrollTo("contact-us");
+            }}
+          >
+            Contact Us
+          </a>
+          <Link href="/login" className="nav-link">
+            Login
+          </Link>
+          <Link href="/profile" className="ProfileImg">
+            <img
+              src={
+                isDarkTheme
+                  ? "/assets/darkprofile.png"
+                  : "/assets/lightprofile.png"
+              }
+            />
+          </Link>
         </div>
       )}
     </div>
