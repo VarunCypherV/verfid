@@ -102,6 +102,9 @@ p {
 
 /* ================================================= */
 .Nav {
+  position: sticky;
+  z-index: 9;
+  top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
