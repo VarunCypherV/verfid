@@ -654,7 +654,9 @@ button {
   .about-us-section h1 {
     font-size: 40px;
   }
-
+  .about-us-section{
+    padding: 35px;
+  }
   .card {
     padding: 25px;
   }
@@ -696,10 +698,67 @@ button {
       width:50%;
     }
   }
+  .card-grid {
+    gap: 24px;
 
-
+  }
 }
 
+
+@media (max-width: 550px) {
+  .about-us-section h1 {
+    font-size: 40px;
+   
+  }
+  .about-us-section{
+    padding: 25px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card p {
+    font-size: 8px;
+  }
+
+  .card h3 {
+    font-size: 8px;
+  }
+
+  .card img {
+    width: 100%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "large large"
+      "blue-light small"
+      "medium medium"
+      "green small";
+  }
+
+  .card.large {
+    grid-column: span 12;
+    grid-row: span 1;
+  }
+  .card.medium {
+    grid-column: span 6;
+    grid-row: span 1;
+  }
+  .card.small {
+    grid-column: span 6;
+    grid-row: span 1;
+    >img {
+      width:50%;
+    }
+  }
+  .card-grid {
+    gap: 16px;
+  }
+}
 
 /* ===================================================== */
 .architecture-workflow-section {
