@@ -130,7 +130,58 @@ const [isDisabled, setIsDisabled] = useState(false);
           }
         : user
     );
-
+    if (!updatedUsers.FirstName || !/^[a-zA-Z\s]+$/.test(updatedUsers.FirstName)) {
+      alert('Invalid First Name! It should contain only letters.');
+      return;
+    }
+    
+    // Last Name: Required, should be non-empty and alphabetic
+    if (!updatedUsers.LastName || !/^[a-zA-Z\s]+$/.test(updatedUsers.LastName)) {
+      alert('Invalid Last Name! It should contain only letters.');
+      return;
+    }
+    
+    // Gender: Required, should be non-empty and match specific values (e.g., Male, Female, Other)
+    if (!updatedUsers.Gender || !/^(Male|Female|Other)$/i.test(updatedUsers.Gender)) {
+      alert('Invalid Gender! Please enter Male, Female, or Other.');
+      return;
+    }
+    
+    // Date of Birth: Required, format YYYY-MM-DD, and should be a valid date
+    if (!updatedUsers.DateOfBirth || !/^\d{4}-\d{2}-\d{2}$/.test(updatedUsers.DateOfBirth)) {
+      alert('Invalid Date of Birth! Please use the format YYYY-MM-DD.');
+      return;
+    }
+    
+    // Phone Number: Required, should be exactly 10 digits
+    if (!updatedUsers.PhoneNumber || updatedUsers.PhoneNumber.length !== 10 || !/^\d{10}$/.test(updatedUsers.PhoneNumber)) {
+      alert('Invalid Phone Number! It should be exactly 10 digits.');
+      return;
+    }
+    
+    // Govt ID Type: Required, should be non-empty (e.g., Aadhar, Passport, etc.)
+    if (!updatedUsers.GovtIDType || !/^[a-zA-Z\s]+$/.test(updatedUsers.GovtIDType)) {
+      alert('Invalid Govt ID Type! It should contain only letters.');
+      return;
+    }
+    
+    // Password: Required, minimum length of 8 characters
+    if (!updatedUsers.Password || updatedUsers.Password.length < 8) {
+      alert('Invalid Password! It should be at least 8 characters long.');
+      return;
+    }
+    
+    // Permanent Address: Required, should be non-empty
+    if (!updatedUsers.PermanentAddress || updatedUsers.PermanentAddress.length < 5) {
+      alert('Invalid Permanent Address! Please enter a valid address.');
+      return;
+    }
+    
+    // Email ID: Required, should be in valid email format
+    if (!updatedUsers.EmailId || !/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(updatedUsers.EmailId)) {
+      alert('Invalid Email ID! Please enter a valid email address.');
+      return;
+    }
     // Save updated users back to localStorage
     localStorage.setItem("RegisteredUsers", JSON.stringify(updatedUsers));
 
